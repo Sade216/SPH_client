@@ -1,0 +1,49 @@
+.MessageWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--text-01);
+    border-radius: 6px;
+    padding: 10px;
+    align-items: flex-end;
+}
+.MessageWrapper:not(:first-child){
+    margin: 10px 0 0 0;
+}
+.MessageWrapper:hover{
+    background-color: var(--background-03);
+}
+.Main{
+    display: flex;
+    align-items: flex-end;
+}
+.ImageWrapper{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.Image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.From{
+    margin-right: 10px;
+    text-decoration: none;
+    color:var(--text-01);
+
+}
+.From:hover{
+    color:var(--accent-01);
+}
+.Content{
+    padding: 0 10px 0 0;
+}

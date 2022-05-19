@@ -1,0 +1,5 @@
+.Wrapper{
+    background-color: var(--background-02);
+    box-shadow: 2px 2px 4px 1px var(--background-00-05);
+    border-radius: 6px;
+}

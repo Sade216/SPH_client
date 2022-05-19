@@ -1,0 +1,21 @@
+.ActionBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--accent-01);
+    align-items: center;
+    height: 100px;
+    background-color: var(--background-01);
+    border-radius: 6px;
+    border: 1px solid var(--accent-01);
+    transition: background-color .2s ease;
+    line-height: 18px;
+}
+.ActionBtn:hover{
+    background-color: var(--background-02);
+}
+.ActionBtn .ActionBtnSvg{
+    height: 25px;
+    width: 25px;
+    margin-bottom: 10px;
+}

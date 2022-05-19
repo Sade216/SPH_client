@@ -1,0 +1,134 @@
+@media (max-width:992px) {
+    .PlayerWrapper{
+        bottom: 0px;
+        height: 0px;
+    }
+    .PlayerWrapper:global(.musicActive){
+        width: auto;
+        height: 100vh;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+.Toggler{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    background-color: var(--background-03);
+    height: 55px;
+    width: 55px;
+    margin: 15px 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .1s ease;
+}
+.Toggler:hover{
+    background-color: var(--background-00);
+}
+.Toggler svg{
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    height: 20px;
+    width: 20px;
+}
+.PlayerWrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    bottom: -100px;
+    opacity: 0;
+    width: 100vw;
+    height: 85px;
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    transition: 
+        bottom .7s cubic-bezier(0.93, 0, 0, 1.1), 
+        height .7s cubic-bezier(0.93, 0, 0, 1.1),
+        opacity .5s ease-out,
+        top .7s cubic-bezier(0.93, 0, 0, 1.1);
+}
+.PlayerWrapper:global(.musicActive){
+    opacity: 100;
+    bottom: 0;
+}
+
+.Data{
+    color: white;
+    margin-left: 20px;
+    width: 300px;
+}
+.Title{
+    font-size: 22px;
+    /* transform:translateX(-100%); */
+    white-space: nowrap;
+    /* animation: slide 5s infinite linear; */
+}
+
+.RunningLine {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+/* @keyframes slide {
+    0% {
+        transform: translateX(0)
+    }
+    50% {
+        transform: translateX(-100%)
+    }
+    100% {
+        transform: translateX(0)
+    }
+} */
+
+.Author{
+    color: var(--text-02);
+    font-size: 18px;
+    text-decoration: none;
+}
+.ImageWrapper{
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+.Image{
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+}
+/* .PlayButton{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity .15s ease;
+    background-color: var(--background-00);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.PlayerWrapper:hover .PlayButton{
+    opacity: 0.7;
+}
+.PlayButton svg{
+    color: var(--text-01);
+    width: 60px;
+    height: 60px;
+} */

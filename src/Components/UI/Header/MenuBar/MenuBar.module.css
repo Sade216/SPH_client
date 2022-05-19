@@ -1,0 +1,87 @@
+.Wrapper{
+    position: relative;
+    width: 100%;
+    
+}
+.Bar{
+    box-shadow: 0 0 5px 1px var(--background-00) inset;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 50px;
+    background-color: var(--background-01);
+    transition: background-color .1s ease;
+}
+.Bar:hover{
+    background-color: var(--background-03);
+}
+.Bar button{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--text-01);
+}
+
+.Bar button svg{
+    transition: transform .3s cubic-bezier(0.25, 0.1, 0, 1.4);
+    height: 22px;
+    width: 22px;
+}
+.Bar button:global(.active) svg{
+    transform: rotate(180deg);
+}
+
+.MenuWrapper{
+    opacity: 0;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px 0;
+    top: 50px;
+    width: 250px;
+    right: 0;
+    border-radius: 6px;
+    background-color: var(--background-02);
+    box-shadow: -5px 5px 10px 1px var(--background-00);
+    animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
+}
+.MenuWrapper:global(.active){
+    display: flex;
+    opacity: 100;
+    top: 70px;
+}
+@keyframes openMenu {
+    0% {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      top: 50px;
+    }
+    100% {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      top: 70px;
+    }
+}
+.Link{
+    text-decoration: none;
+    padding: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+}
+.Link:hover{
+    color: var(--text-02)
+}
+.Link:global(.active){
+    color: var(--accent-01);
+}

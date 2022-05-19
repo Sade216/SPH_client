@@ -1,0 +1,174 @@
+.UserWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6px;
+    height: 70px;
+    width: 100%;    
+    background-color: var(--background-02);
+    box-shadow: 2px 2px 4px 1px var(--background-00-05);
+    /* padding: 0 10px 0 10px; */
+    margin: 10px 0;
+    position: relative;
+}
+.UserWrapper:hover{
+    background-color: var(--background-03);
+}
+
+
+.ImageWrapper{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+.Image{
+    height: 50px;
+    width: 50px;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+}
+
+.Main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 90px);
+    align-items: center;
+}
+
+.Credentials{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: calc(100% - 20px);
+}
+.Nickname{
+    text-decoration: none;
+    color: var(--text-01);
+    font-size: 18px;
+    height: 100%;
+    /* width: calc(100% - 2rem); */   
+    width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+
+}
+.Author{
+    color: var(--text-02);
+    font-size: 14px;
+    text-decoration: none;
+}
+.Author:hover{
+    color: var(--accent-01);
+}
+.Options{
+    opacity: 0;
+    color: var(--text-01);
+    font-size: 26px;
+    transition: opacity .1s ease;
+}
+.UserWrapper:hover .Options{
+    opacity: 1;
+    color: var(--text-01);
+    font-size: 26px;
+}
+.OptionElement{
+    cursor: pointer;
+}
+
+
+
+.MenuWrapper{
+    position: relative;
+    width: 100%;
+}
+.MenuBar{
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 50px;
+    background-color: var(--background-01);
+    transition: background-color .1s ease;
+}
+.MenuBar:hover{
+    background-color: var(--background-03);
+}
+.MenuBar button{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--text-01);
+}
+
+.MenuBar button svg{
+    transition: transform .2s ease;
+    height: 22px;
+    width: 22px;
+}
+.MenuBar button:global(.active) svg{
+    transform: rotate(180deg);
+}
+
+.MenuOpenWrapper{
+    opacity: 0;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px 0;
+    top: -10px;
+    width: 250px;
+    right: 0;
+    border-radius: 6px;
+    background-color: var(--background-02);
+    box-shadow: -5px 5px 10px 1px var(--background-00);
+    animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
+}
+.MenuOpenWrapper:global(.active){
+    display: flex;
+    opacity: 100;
+    top: 0px;
+}
+@keyframes openMenu {
+    0% {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      top: -10px;
+    }
+    100% {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      top: 0px;
+    }
+}
+.Link{
+    text-decoration: none;
+    padding: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+.Link:hover{
+    color: var(--text-02)
+}
+.Link:global(.active){
+    color: var(--accent-01);
+}

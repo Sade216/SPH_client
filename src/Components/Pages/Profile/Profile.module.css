@@ -1,0 +1,124 @@
+.Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Hr{
+    margin: 20px 0 10px 0;
+}
+.Spinner{
+    color: var(--text-01);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ProfileBackImage{
+    height: 400px;
+    width: 100%;
+    /* filter: blur(2px); */
+    /* background-attachment: fixed; */
+}
+
+.Wrapper{
+    margin-top: -170px;
+}
+
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.Title{
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-01);
+}
+
+.ProfileAvatar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+}
+.ProfileImage{
+    height: 130px;
+    width: 130px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-position: center;
+}
+
+.ProfileData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.ActionGrid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.PrimaryText{
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-01);
+}
+.SecondaryText{
+    color: var(--text-02);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.Stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    /* width: 100%; */
+}
+.VerticalLine{
+    width: 2px;
+    background-color: var(--background-01);
+    height: 50px;
+    margin: 0 15px 0 15px;
+}
+.StatsElement{
+    color: var(--text-02);
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100px;
+}
+.StatsMainText{
+    color: var(--text-01);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.Link{
+    background-color: transparent;
+    border: none;
+    color: var(--accent-01);
+}
+.Link:hover{
+    color: var(--text-01);
+}

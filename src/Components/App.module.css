@@ -1,0 +1,13 @@
+.Wrapper{
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
+}
+.ErrorPage{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: var(--text-02);
+    font-size: 22px;
+    margin-top: 20px;
+}
