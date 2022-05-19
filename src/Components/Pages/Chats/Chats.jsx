@@ -20,7 +20,7 @@ const Chats = () => {
     function getRooms(){
         axios({
             method: 'get',
-            url: serverURL + '/chat/rooms'
+            url: serverURL + '/chat/'
         }).then((res)=>{
             setRooms(res.data)
         })

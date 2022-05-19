@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 import { ToastSuccses } from '../Components/UI/Toasts'
 
-const serverURL = 'http://localhost:5000/api';
-const serverURLWS = 'http://localhost:5000';
-// const serverURL = 'https://samplepackshouse-server.herokuapp.com/api';
-// const serverURLWS = 'https://samplepackshouse-server.herokuapp.com/';
+// const serverURL = 'http://localhost:5000/api';
+// const serverURLWS = 'http://localhost:5000';
+const serverURL = 'https://samplepackshouse-server.herokuapp.com/api';
+const serverURLWS = 'https://samplepackshouse-server.herokuapp.com/';
 
 const AuthContext = createContext({
   registerForm: ()=> Promise, 
@@ -31,10 +31,20 @@ export default function AuthContextProvider({children}) {
   const navigate = useNavigate();
 
   useEffect(()=>{
+    if(currentUser?.role === 'admin' ) {
+      setIsAdmin(true)
+    }
+    else{
+      setIsAdmin(false)
+    }
+  },[currentUser])
+
+  useEffect(()=>{
     getUser()
   },[]);
 
   function getUser(){
+    setAuthToken(null)
     axios({
         method: 'GET',
         withCredentials: true,
@@ -42,12 +52,6 @@ export default function AuthContextProvider({children}) {
       }).then((res)=>{
         if(res?.status === 200){
           setCurrentUser(res.data)
-          if(res.data.role === 'admin' ) {
-            setIsAdmin(true)
-          }
-          else{
-            setIsAdmin(false)
-          }
         }
       })
   }

@@ -26,6 +26,9 @@ export const useChat = () => useContext(ChatContext)
 export default function ChatContextProvider({children}) {
     const { currentUser, serverURLWS } = useAuth()
     const socket = io(serverURLWS, {
+        headers:{
+            authorization: localStorage.getItem('jwtToken')
+        },
         withCredentials: true,
         // transports: ['websocket'],
     })
