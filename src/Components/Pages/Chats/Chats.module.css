@@ -1,0 +1,140 @@
+.Hr{
+    margin: 20px 0 10px 0;
+}
+.Spinner{
+    color: var(--text-01);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Wrapper{
+    padding: 24px 0;
+    height: 100%;
+}
+.CardWrapper{
+    padding: 20px;
+    height: 100%;
+    margin-bottom: 24px;
+    background-color: var(--background-02);
+    box-shadow: 2px 2px 4px 1px var(--background-00-05);
+    border-radius: 6px;
+}
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+}
+.Title{
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-01);
+}
+
+.RoomsWrapper{
+    height: 85%;
+    overflow-y: auto;
+}
+
+.ChatWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.ChatWindow{
+    background-color: var(--background-01);
+    border-radius: 6px;
+    height: calc(100vh - 292px);
+    /* height: inherit; */
+    box-shadow: 0 0 5px 1px var(--background-00) inset;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.Footer{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/*send msg*/
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.InputWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--background-01);
+    border-radius: 6px;
+    box-shadow: 0 0 5px 1px var(--background-00) inset;
+}
+.TextWrapper{
+    width: inherit;
+    display: flex;
+}
+.MsgText{
+    width: inherit;
+    background-color: transparent;
+    /* resize: none; */
+    max-height: 100px;
+    min-height: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    caret-color: var(--text-01);
+    color: var(--text-01);
+    font-size: 18px;
+    padding: 10px 10px;
+}
+.MsgText::-webkit-scrollbar{
+    display: none;
+}
+.Buttton{
+    height: 33px;
+    width: 33px;
+    color: var(--text-02);
+    margin: 0 10px;
+    cursor: pointer;
+}
+.Buttton:focus{
+    color: var(--accent-01);
+}
+.Buttton:hover{
+    color: var(--accent-01);
+}
+.SendButtton{
+    height: 33px;
+    width: 33px;
+    color: var(--text-02);
+    margin: 0 10px;
+    cursor: pointer;
+}
+.SendButtton:focus{
+    color: var(--accent-01);
+}
+.SendButtton:hover{
+    color: var(--accent-01);
+}
+/* .Row{
+    display: flex;
+    flex-direction: row;
+}*/
+/*
+.PrimaryText{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-01);
+}
+.SecondaryText{
+    margin-left: 10px;
+    color: var(--text-02);
+    font-size: 16px;
+    font-weight: 500;
+} */

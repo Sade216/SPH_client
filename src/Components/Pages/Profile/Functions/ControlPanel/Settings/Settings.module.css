@@ -1,0 +1,97 @@
+.ActionBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--accent-01);
+    align-items: center;
+    height: 100px;
+    background-color: var(--background-01);
+    border-radius: 6px;
+    border: 1px solid var(--accent-01);
+    transition: background-color .2s ease;
+}
+.ActionBtn:hover{
+    background-color: var(--background-02);
+}
+.ActionBtn .ActionBtnSvg{
+    height: 25px;
+    width: 25px;
+    margin-bottom: 10px;
+}
+
+.Row{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.Row label{
+    font-size: 18px;
+}
+.Row input{
+    background: var(--background-01);
+    height: 40px;
+    border-radius: 6px;
+    padding: 0px 10px 0px 10px;
+    border: 1px solid transparent;
+    transition: border .2s ease-in-out, background-color .1s ease;
+    outline: none;
+    caret-color: var(--text-01);
+    color: var(--text-01);
+    font-size: 16px;
+}
+.Row .SelectButton{
+    background: var(--background-01);
+    height: 40px;
+    border-radius: 6px;
+    padding: 0px 10px 0px 10px;
+    border: 1px solid transparent;
+    transition: border .2s ease-in-out, background-color .1s ease;
+    outline: none;
+    caret-color: var(--text-01);
+    color: var(--text-01);
+    font-size: 16px;
+}
+.Row input:focus{
+    border: 1px solid var(--accent-01);
+}
+
+.Row input[type=file]{
+    display: none;
+}
+
+.Row input[type=submit]{
+    margin-top: 20px;
+}
+.Row input[type=submit]:hover{
+    border: 1px solid var(--accent-01);
+}
+.Row textarea{
+    height: 100px;
+    background: var(--background-01);
+    border-radius: 6px;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid transparent;
+    transition: border .2s ease-in-out, background-color .1s ease;
+    outline: none;
+    caret-color: var(--text-01);
+    color: var(--text-01);
+    font-size: 16px;
+}
+.Row textarea:focus{
+    border: 1px solid var(--accent-01);
+}
+
+.ActionBtnHeader{
+    padding: 0;
+    text-decoration: none;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+}
+.ActionBtnHeader:hover{
+    color: var(--text-02)
+}
+.ActionBtnHeader:global(.active){
+    color: var(--accent-01);
+}

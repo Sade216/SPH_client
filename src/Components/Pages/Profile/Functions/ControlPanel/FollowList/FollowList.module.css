@@ -1,0 +1,24 @@
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Title{
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-01);
+}
+.Link{
+    background-color: transparent;
+    border: none;
+    color: var(--accent-01);
+}
+.Link:hover{
+    color: var(--text-01);
+}

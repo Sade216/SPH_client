@@ -1,0 +1,73 @@
+
+.ModalWrap {
+    position: fixed;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 11;
+    overflow-x: hidden;
+    background-color: rgba(31, 32, 41, .75);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms 300ms ease;
+    z-index: 11;
+    backdrop-filter: blur(2px);
+}
+
+.Visible {
+    pointer-events: auto;
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.Modal {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    display: block;
+    width: 60vw;
+    height: 60%;
+    min-height: 400px;
+    min-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    background-color: var(--background-02);
+    border-radius: 6px;
+    align-self: center;
+    opacity: 0;
+    transform: translateY(-80px);
+    transition: opacity 200ms 300ms ease-in-out, transform 200ms 150ms ease-in-out;
+}
+
+.Visible .Modal {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 200ms 400ms ease, transform 250ms 300ms ease;
+}
+
+.ModalContent{
+    margin: 20px 20px 20px 20px;
+    color: var(--text-01);
+    font-size: 24px;
+}
+
+.CloseBtn{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 0;
+    right: 0; 
+    padding: 20px 20px;
+    color: var(--text-01);
+}
+.CloseBtn svg{
+    font-size: 36px;
+}

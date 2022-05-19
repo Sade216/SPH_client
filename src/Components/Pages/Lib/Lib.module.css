@@ -1,0 +1,73 @@
+.Hr{
+    margin: 20px 0 10px 0;
+}
+.Spinner{
+    color: var(--text-01);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.Wrapper{
+    margin: 24px 0;
+}
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.Title{
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-01);
+}
+
+
+.Tabs{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: var(--text-01);
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+.Tabs li{
+    position: relative;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 20px;
+    height: 50px;
+    text-align: left;
+    cursor: pointer;
+}
+.Tabs li:hover::before{
+    position: absolute;
+    content: '';
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--text-02);
+}
+.Tabs li[aria-selected=true]{
+    color: var(--accent-01)
+}
+.Tabs li[aria-selected=true]::before{
+    position: absolute;
+    content: '';
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--accent-01);
+}
+
+.TabContent{
+    color: var(--text-01)
+}

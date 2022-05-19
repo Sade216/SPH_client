@@ -1,0 +1,32 @@
+.ProfileImage{
+    height: 130px;
+    width: 130px;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+}
+.ImageUploader{
+    position: absolute;
+    opacity: 0;
+    height: 130px;
+    width: 130px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity .2s ease;
+    background-color: var(--background-00);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ImageUploader:hover{
+    opacity: 0.8;
+}
+.ImageUploader svg{
+    color: var(--text-01);
+    width: 40px;
+    height: 40px;
+}
+.ImageUploader input[type=file]{
+    display: none;
+}

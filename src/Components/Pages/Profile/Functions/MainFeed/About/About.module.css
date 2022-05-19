@@ -1,0 +1,25 @@
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.Row{
+    display: flex;
+    flex-direction: row;
+}
+.Title{
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-01);
+    margin-bottom: 15px;
+}
+.PrimaryText{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-01);
+}
+.SecondaryText{
+    margin-left: 10px;
+    color: var(--text-02);
+    font-size: 16px;
+    font-weight: 500;
+}

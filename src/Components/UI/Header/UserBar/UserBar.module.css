@@ -1,0 +1,114 @@
+@media (max-width:990px) {
+    /* .Bar{
+        width: auto;
+    } */
+    .Name{
+        width: 50px !important;
+    }
+}
+@media (max-width:1200px) {
+    .Name{
+        width: 130px !important;
+    }
+}
+
+.Wrapper{
+    position: relative;
+    width: 100%;
+}
+.User{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 10px;
+    user-select:none;
+}
+.Bar{
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 50px;
+    background-color: var(--background-01);
+    transition: background-color .1s ease;
+    box-shadow: 0 0 5px 1px var(--background-00) inset;
+}
+.Bar:hover{
+    background-color: var(--background-03);
+}
+.Name{
+    width: 170px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    text-overflow: ellipsis;
+    color: var(--text-01);
+    font-size: 16px;
+}
+.Role{
+    color: var(--text-02);
+    font-size: 12px;
+}
+.Wrapper .ProfileImage{
+    height: 36px;
+    width: 36px;
+    border-radius: 6px;
+    margin-right: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.UserMenu{
+    opacity: 0;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px 0;
+    top: 50px;
+    width: 250px;
+    right: 0;
+    border-radius: 6px;
+    background-color: var(--background-02);
+    box-shadow: -5px 5px 10px 1px var(--background-00);
+    animation: open123 .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
+}
+.UserMenu:global(.active){
+    display: flex;
+    opacity: 100;
+    top: 70px;
+}
+
+@keyframes open123 {
+    0% {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      top: 50px;
+    }
+    100% {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      top: 70px;
+    }
+  }
+.Link{
+    text-decoration: none;
+    padding: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+    justify-content: space-between;
+}
+.Link:hover{
+    color: var(--text-02)
+}
+.Link:global(.active){
+    color: var(--accent-01);
+}
