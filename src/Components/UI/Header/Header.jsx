@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import cl from './Header.module.css'
-import {Container, Row, Col, Spinner} from 'react-bootstrap'
+import {Container, Row, Col, Button, Offcanvas} from 'react-bootstrap'
 
 import SearchBar from './SearchBar/SearchBar'
 import UserBar from './UserBar/UserBar'
@@ -11,19 +11,21 @@ import { NavLink } from 'react-router-dom'
 const Header = () => {
   return (
     <div className={cl.HeaderWrapper}>
+        
         <Container className={cl.Header}>
           <Row>
-            <Col>
+            <Col md={4}>
               <NavLink className={cl.Logo} to='/'>SPH</NavLink>
             </Col>
-            <Col xs={1}>
-              <MenuBar/>
-            </Col>
-            <Col  xs={4}>
+            
+            <Col>
               <SearchBar/>
             </Col>
-            <Col xs={3}>
+            <Col md={2}>
               <UserBar/>
+            </Col>
+            <Col md={1}>
+              <MenuBar/>
             </Col>
           </Row>
         </Container>

@@ -1,30 +1,35 @@
 import React, {useEffect, useState, useRef} from 'react'
-import { useAuth } from '../../../../Contexts/UserContext';
+import { useAuth } from '../../../../Contexts/UserContext'
 import {NavLink} from 'react-router-dom'
 
+import {Offcanvas} from 'react-bootstrap'
+
+
 import cl from './MenuBar.module.css'
+import {AiOutlineMenu} from 'react-icons/ai'
 import {IoIosArrowDown} from 'react-icons/io'
+import {IoCloseSharp} from 'react-icons/io5'
 
 const MenuBar = () => {
     const { currentUser } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const MenuBarRef = useRef(null);
-    useOutsideAlerter(MenuBarRef);
+    // useOutsideAlerter(MenuBarRef);
 
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                setIsMenuOpen(false)
-                }
-            }
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
+    // function useOutsideAlerter(ref) {
+    //     useEffect(() => {
+    //         function handleClickOutside(event) {
+    //             if (ref.current && !ref.current.contains(event.target)) {
+    //             setIsMenuOpen(false)
+    //             }
+    //         }
+    //         document.addEventListener("mousedown", handleClickOutside);
+    //         return () => {
+    //             document.removeEventListener("mousedown", handleClickOutside);
+    //         };
+    //     }, [ref]);
+    // }
 
     function MenuToggler(){
         setIsMenuOpen(!isMenuOpen);
@@ -33,16 +38,23 @@ const MenuBar = () => {
         <div className={cl.Wrapper} ref={MenuBarRef}>
             <div className={cl.Bar}>
                 <button className={isMenuOpen ? 'active' : ''} onClick={()=> MenuToggler()}>
-                    <IoIosArrowDown/>
+                    {/* <IoIosArrowDown/> */}
+                    <AiOutlineMenu/>
                 </button>
             </div>
-            <div className={isMenuOpen ? cl.MenuWrapper + ' active' : cl.MenuWrapper}>
-                <NavLink className={cl.Link} to='/' onClick={()=> setIsMenuOpen(false)}>Новости</NavLink>
-                <NavLink className={cl.Link} to='/lib' onClick={()=> setIsMenuOpen(false)}>Библиотека</NavLink>
-                {currentUser &&
-                    <NavLink className={cl.Link} to='/msg' onClick={()=> setIsMenuOpen(false)}>Чаты</NavLink>
-                }
-            </div>
+            <Offcanvas show={isMenuOpen} onHide={MenuToggler} placement='end' className={cl.MenuWrapper}>
+                <Offcanvas.Header className={cl.MenuHeader}>
+                    <Offcanvas.Title className={cl.MenuTitle}>SamplePacksHouse</Offcanvas.Title>
+                    <IoCloseSharp className={cl.CloseBtn} onClick={()=>setIsMenuOpen(false)}/>
+                </Offcanvas.Header>
+                <Offcanvas.Body className={cl.MenuBody}>
+                    <NavLink className={cl.Link} to='/' onClick={()=> setIsMenuOpen(false)}>Новости</NavLink>
+                    <NavLink className={cl.Link} to='/lib' onClick={()=> setIsMenuOpen(false)}>Библиотека</NavLink>
+                    {currentUser &&
+                        <NavLink className={cl.Link} to='/msg' onClick={()=> setIsMenuOpen(false)}>Чаты</NavLink>
+                    }
+                </Offcanvas.Body>
+            </Offcanvas>
         </div>
     )
 }

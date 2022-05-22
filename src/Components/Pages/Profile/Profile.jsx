@@ -37,7 +37,7 @@ const Profile = () => {
         <div className={cl.Wrapper}>
           <Container>
             <Row>
-              <Col xs={4}>
+              <Col lg={4}>
                 <div className={cl.ControlWrapper}>
                   <div className={card.Wrapper}>
                     <div className={cl.CardWrapper}>

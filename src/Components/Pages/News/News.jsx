@@ -139,7 +139,7 @@ const News = () => {
                 <NewsFetch />
               </QueryClientProvider>
             </Col>
-            <Col xs={3}>
+            <Col md={3}>
                 <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.Header}>

@@ -60,7 +60,7 @@ const Profile = () => {
         <div className={cl.Wrapper}>
           <Container>
             <Row>
-              <Col xs={4}>
+              <Col md={4}>
                 <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.ProfileAvatar}>
@@ -98,6 +98,8 @@ const Profile = () => {
                     <AddToFollow id={pageUser.nickname}/>
                   }
                 </div>
+                {/* Передать nickname через props
+                Добавить followList функцию */}
                 <Collection/>
               </Col>
               <Col>

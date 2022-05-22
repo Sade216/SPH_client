@@ -12,9 +12,7 @@
     height: 100%;
 }
 .CardWrapper{
-    padding: 20px;
-    height: 100%;
-    margin-bottom: 24px;
+    height: calc(100vh - 120px);
     background-color: var(--background-02);
     box-shadow: 2px 2px 4px 1px var(--background-00-05);
     border-radius: 6px;
@@ -47,8 +45,7 @@
 .ChatWindow{
     background-color: var(--background-01);
     border-radius: 6px;
-    height: calc(100vh - 292px);
-    /* height: inherit; */
+    height: inherit;
     box-shadow: 0 0 5px 1px var(--background-00) inset;
     padding: 15px;
     overflow-y: auto;

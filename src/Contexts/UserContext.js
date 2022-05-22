@@ -18,6 +18,7 @@ const AuthContext = createContext({
   getUser: ()=> Promise,
   currentUser: null,
   isAdmin: null,
+  isModerator: null,
   serverURL,
   serverURLWS,
 })
@@ -27,6 +28,7 @@ export const useAuth = () => useContext(AuthContext)
 export default function AuthContextProvider({children}) {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isModerator, setIsModerator] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,6 +38,12 @@ export default function AuthContextProvider({children}) {
     }
     else{
       setIsAdmin(false)
+    }
+    if(currentUser?.role === 'moderator' ) {
+      setIsModerator(true)
+    }
+    else{
+      setIsModerator(false)
     }
   },[currentUser])
 
@@ -111,6 +119,7 @@ export default function AuthContextProvider({children}) {
     getUser,
     currentUser,
     isAdmin,
+    isModerator,
     serverURL,
     serverURLWS,
   }

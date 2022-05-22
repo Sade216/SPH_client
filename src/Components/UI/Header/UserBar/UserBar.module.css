@@ -6,9 +6,24 @@
         width: 50px !important;
     }
 }
-@media (max-width:1200px) {
+@media (max-width:1400px) {
     .Name{
-        width: 130px !important;
+        display: none !important;
+    }
+    .Role{
+        display: none;
+    }
+    .Wrapper{
+        width: 60px !important;
+    }
+    .Wrapper .ProfileImage{
+        margin: 0;
+    }
+    .User{
+        display: none;
+    }
+    .Bar{
+        justify-content: center !important;
     }
 }
 
@@ -39,7 +54,7 @@
     background-color: var(--background-03);
 }
 .Name{
-    width: 170px;
+    width: 130px;
     overflow: hidden;
     position: relative;
     display: inline-block;

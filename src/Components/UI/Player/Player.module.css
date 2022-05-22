@@ -2,6 +2,8 @@
     .PlayerWrapper{
         bottom: 0px;
         height: 0px;
+        flex-direction: column;
+        justify-content: center;
     }
     .PlayerWrapper:global(.musicActive){
         width: auto;
@@ -10,6 +12,24 @@
         top: 0;
         left: 0;
         right: 0;
+    }
+    .Data{
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    .Data div{
+        text-align: center;
+        justify-content: center;
+    }
+    .ImageWrapper{
+        width: 300px !important;
+        height: 300px !important;
+        margin: 0 0 15px 0 !important;
+    }
+    .Image{
+        width: 100% !important;
+        height: 100% !important;
+
     }
 }
 .Toggler{

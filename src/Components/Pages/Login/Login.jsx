@@ -31,7 +31,7 @@ const Login = () => {
     <div className={cl.Wrapper}>
         <Container>
           <Row>
-            <Col>
+            <Col className={cl.Colums}>
               <div className={card.Wrapper}>
                 <div className={cl.Header}>
                   <div className={cl.Title}>

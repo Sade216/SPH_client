@@ -36,42 +36,23 @@
 }
 
 .MenuWrapper{
-    opacity: 0;
-    display: none;
-    position: absolute;
-    flex-direction: column;
-    padding: 10px 0;
-    top: 50px;
-    width: 250px;
-    right: 0;
-    border-radius: 6px;
-    background-color: var(--background-02);
-    box-shadow: -5px 5px 10px 1px var(--background-00);
-    animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
-    z-index: 100;
+    background-color: var(--background-00);
+    /* width: 320px; */
 }
-.MenuWrapper:global(.active){
-    display: flex;
-    opacity: 100;
-    top: 70px;
+.MenuHeader{
+    color: var(--text-01);
 }
-@keyframes openMenu {
-    0% {
-      display: flex;
-      opacity: 0;
-      visibility: hidden;
-      top: 50px;
-    }
-    100% {
-      display: flex;
-      opacity: 1;
-      visibility: visible;
-      top: 70px;
-    }
+.CloseBtn{
+    font-size: 30px;
+    color: var(--text-01);
+    cursor: pointer;
 }
+.CloseBtn:hover{
+    color: var(--text-02);
+}
+
 .Link{
     text-decoration: none;
-    padding: 0 15px;
     height: 50px;
     display: flex;
     align-items: center;

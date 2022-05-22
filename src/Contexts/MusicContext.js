@@ -20,7 +20,7 @@ export default function MusicContextProvider({children}) {
     const {currentUser} = useAuth()
 
     const [UserPlaylist, setUserPlaylist] = useState([]);
-    const [currentTrack, setCurrentTrack] = useState([]);
+    const [currentTrack, setCurrentTrack] = useState(null);
 
     // const navigate = useNavigate();
 

@@ -62,7 +62,7 @@ const Chats = () => {
         <div className={cl.Wrapper} >
             <Container style={{height: '100%'}}>
                 <Row style={{height: '100%'}}>
-                    <Col xs={4} style={{height: '100%'}}>
+                    <Col md={4} style={{height: '100%'}}>
                         <div className={cl.CardWrapper}>
                             <div className={cl.Header}>
                                 <div className={cl.Title}>Комнаты: {members.length}</div>

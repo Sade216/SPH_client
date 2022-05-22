@@ -14,6 +14,25 @@
 .MessageWrapper:hover{
     background-color: var(--background-03);
 }
+
+.MessageWrapperRevert{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    color: var(--text-01);
+    border-radius: 6px;
+    padding: 10px;
+    align-items: flex-end;
+}
+.MessageWrapperRevert:not(:first-child){
+    margin: 10px 0 0 0;
+}
+.MessageWrapperRevert:hover{
+    background-color: var(--background-03);
+}
+
+
 .Main{
     display: flex;
     align-items: flex-end;
@@ -46,4 +65,9 @@
 }
 .Content{
     padding: 0 10px 0 0;
+    cursor: default;
+}
+.Time{
+    font-size: 14px;
+    color: var(--text-02);
 }

@@ -105,7 +105,7 @@ const Track = (props) => {
         <div className={cl.Image} style={{backgroundImage: `url(${track.imageURL ? track.imageURL : './assets/questionmark.jpg'})`}}></div>
         {props.mode !== 'preview' &&
           <div className={cl.PlayButton} onClick={PlayButton}>
-            {currentTrack.title === track.title ?
+            {currentTrack?.title === track.title ?
               <BsPause/>
               :
               <BsPlay/>

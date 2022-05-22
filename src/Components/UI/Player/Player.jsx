@@ -36,7 +36,7 @@ const Player = () => {
         setTogglePlayer(!togglePlayer)
     }
     
-  return (
+  return (currentTrack &&
     <div ref={playerRef}>
         <div className={cl.PlayerWrapper + (togglePlayer ? ' musicActive' : '') }>
             {currentTrack.trackURL &&
