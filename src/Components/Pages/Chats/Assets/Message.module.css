@@ -59,6 +59,7 @@
 .Content{
     padding: 0 10px 0 0;
     cursor: default;
+    overflow-wrap: anywhere;
 }
 .Time{
     font-size: 14px;
