@@ -19,7 +19,7 @@ const News = () => {
             <Col>
               <NewsFetch/>
             </Col>
-            <Col lg={{order: 'last', span: 3}} xs={{order: 'last', span: 3}} sm={{order: 'first', span: 12}}>
+            <Col lg={{order: 'last', span: 3}} sm={{order: 'first', span: 12}} xs={{order: 'first', span: 12}} >
                 <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.Header}>

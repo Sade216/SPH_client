@@ -34,6 +34,11 @@ const MenuBar = () => {
     function MenuToggler(){
         setIsMenuOpen(!isMenuOpen);
     }
+
+    function LogOut(){
+        logout()
+        setIsMenuOpen(false)
+    }
     return (
         <div className={cl.Wrapper} ref={MenuBarRef}>
             <div className={cl.Bar}>
@@ -53,7 +58,7 @@ const MenuBar = () => {
                     {currentUser &&
                         <NavLink className={cl.Link} to='/msg' onClick={()=> setIsMenuOpen(false)}>Чаты</NavLink>
                     }
-                    {isAdmin && <NavLink className={cl.Link} to='/admin'>Админ</NavLink>}
+                    {isAdmin && <NavLink className={cl.Link} to='/admin' onClick={()=> setIsMenuOpen(false)}>Админ</NavLink>}
                     {currentUser && 
                         <NavLink className={cl.Link} to={'/@' + currentUser.nickname} onClick={()=> setIsMenuOpen(false)}>Профиль</NavLink>
                     }
@@ -67,7 +72,7 @@ const MenuBar = () => {
                         <NavLink className={cl.Link} to='/login' onClick={()=> setIsMenuOpen(false)}>Логин/Регистрация</NavLink>
                     }
                     {currentUser &&
-                        <button className={cl.Link} onClick={logout}>Выйти</button>
+                        <button className={cl.Link} onClick={()=>LogOut()}>Выйти</button>
                     }
                 </Offcanvas.Body>
             </Offcanvas>
