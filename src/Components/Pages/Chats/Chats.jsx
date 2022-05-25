@@ -55,14 +55,14 @@ const Chats = () => {
     var messagesEnd = useRef();
 
     function scrollToBottom() {
-        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'start' });
+        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'nearest'});
       }
 
     return (
         <div className={cl.Wrapper} >
-            <Container style={{height: '100%'}}>
-                <Row style={{height: '100%'}}>
-                    <Col md={4} style={{height: '100%'}}>
+            <Container>
+                <Row>
+                    <Col className={cl.Column} md={4} >
                         <div className={cl.CardWrapper}>
                             <div className={cl.RoomsWrapper}>
                                 {
@@ -75,7 +75,7 @@ const Chats = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col>
+                    <Col className={cl.Column}> 
                         <div className={cl.CardWrapper}>
                             <div className={cl.ChatWrapper}>
                                 <div className={cl.ChatWindow} >
