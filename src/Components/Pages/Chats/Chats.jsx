@@ -55,7 +55,7 @@ const Chats = () => {
     var messagesEnd = useRef();
 
     function scrollToBottom() {
-        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'center', inline: 'start'});
+        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'start'});
     }
 
     return (
