@@ -1,6 +1,9 @@
 .Wrapper{
     overflow-y: auto;
-    height: calc(100vh - var(--header-height));
+    /* height: calc(100vh - var(--header-height)); */
+    height: 100vh;
+    margin-top: 70px;
+    padding-bottom: 70px;
 }
 .ErrorPage{
     display: flex;
