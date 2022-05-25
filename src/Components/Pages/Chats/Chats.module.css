@@ -12,11 +12,13 @@
     height: 100%;
 }
 
-.Column{
+/* .Column{
     margin-bottom: 24px;
-}
+} */
 
 .CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
     height: 100%;
     background-color: var(--background-02);
     box-shadow: 2px 2px 4px 1px var(--background-00-05);
@@ -67,7 +69,7 @@
     position: relative;
     background-color: var(--background-01);
     border-radius: 6px;
-    height: inherit;
+    height: 100%;
     box-shadow: 0 0 5px 1px var(--background-00) inset;
     padding: 0 15px;
     overflow-y: auto;
@@ -81,10 +83,6 @@
 }
 
 /*send msg*/
-.CardWrapper{
-    padding: 20px;
-    margin-bottom: 24px;
-}
 .InputWrapper{
     display: flex;
     align-items: center;
@@ -110,7 +108,8 @@
     caret-color: var(--text-01);
     color: var(--text-01);
     font-size: 18px;
-    padding: 10px 10px;
+    padding: 15px 10px 5px 10px;
+    margin-bottom: 5px;
 }
 .MsgText::-webkit-scrollbar{
     display: none;
