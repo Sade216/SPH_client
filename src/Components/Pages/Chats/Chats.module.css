@@ -22,7 +22,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 30px;
+    margin: 10px 0;
 }
 .Title{
     font-size: 22px;
@@ -31,8 +31,24 @@
 }
 
 .RoomsWrapper{
-    height: 85%;
+    height: 100%;
+    background-color: var(--background-01);
+    border-radius: 6px;
+    box-shadow: 0 0 5px 1px var(--background-00) inset;
+    padding: 15px;
     overflow-y: auto;
+}
+
+.RoomWrapper{
+    font-size: 22px;
+    color: var(--text-01);
+    padding: 15px 15px;
+    border-radius: 6px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.RoomWrapper:hover{
+    background-color: var(--background-02);
 }
 
 .ChatWrapper{
@@ -43,11 +59,12 @@
 }
 
 .ChatWindow{
+    position: relative;
     background-color: var(--background-01);
     border-radius: 6px;
     height: inherit;
     box-shadow: 0 0 5px 1px var(--background-00) inset;
-    padding: 15px;
+    padding: 0 15px;
     overflow-y: auto;
 }
 

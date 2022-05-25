@@ -68,17 +68,6 @@ const Settings = (props) => {
                         <label>Описание:</label>
                         <textarea type='text' value={desc} onChange={(e)=>setDesc(e.target.value)}/>
                     </div> */}
-                    
-                    {/* <div className={cl.Row}>
-                        <label>Обложка?:</label>
-                        <button className={cl.SelectButton} onClick={()=>HandleImageUploader()}>Выберите обложку</button>
-                        <input ref={uploadImage} type='file' accept='image/*' onChange={handleImageSelect}/>
-                    </div>
-                    
-                    <div className={cl.Row}>
-                        <label>Теги:</label>
-                        <input type='text' value={tags} onChange={(e)=>setTags(e.target.value)}/>
-                    </div> */}
 
                     <div className={cl.Row}>
                         <input disabled={isLoading} type='submit' onClick={()=> SubmitSettings()}/>

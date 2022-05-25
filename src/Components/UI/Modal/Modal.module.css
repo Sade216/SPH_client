@@ -12,12 +12,13 @@
     height: 100vh;
     z-index: 11;
     overflow-x: hidden;
-    background-color: rgba(31, 32, 41, .75);
+    background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
+    cursor: default;
     opacity: 0;
     transition: opacity 250ms 300ms ease;
     z-index: 11;
-    backdrop-filter: blur(2px);
+    /* backdrop-filter: blur(2px); */
 }
 
 .Visible {
@@ -42,6 +43,7 @@
     background-color: var(--background-02);
     border-radius: 6px;
     align-self: center;
+    text-align: left;
     opacity: 0;
     transform: translateY(-80px);
     transition: opacity 200ms 300ms ease-in-out, transform 200ms 150ms ease-in-out;

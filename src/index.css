@@ -5,6 +5,14 @@
 ::-webkit-scrollbar-thumb {background: #888;border-radius: 20px}
 ::-webkit-scrollbar-thumb:hover {background: #555}
 
+
+/* привет))) */
+@media (max-width:992px){
+  :root{
+    --header-height: 200px;
+  }
+}
+
 :root{
   --header-height: 70px;
 }

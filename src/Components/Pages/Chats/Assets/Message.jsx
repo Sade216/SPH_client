@@ -11,10 +11,12 @@ const Message = (props) => {
     const from = message.from
     return (
         <div className={from.nickname === currentUser.nickname ? cl.MessageWrapperRevert : cl.MessageWrapper}>
-            <div className={cl.Main }>
+            <div className={cl.Main}>
                 {from.nickname !== currentUser.nickname && 
                     <div className={cl.ImageWrapper}>
-                        <div className={cl.Image} style={{backgroundImage: `url(${from.avatarURL ? from.avatarURL : './assets/questionmark.jpg'})`}}></div>
+                        <div className={cl.Image} 
+                        style={{backgroundImage: `url(${from.avatarURL ? from.avatarURL : './assets/questionmark.jpg'})`}}>
+                        </div>
                     </div>
                 }
                 {from.nickname !== currentUser.nickname ?

@@ -68,7 +68,6 @@ const Lib = () => {
                         <Tab>Популярное</Tab>
                         <Tab>Подборки</Tab>
                     </TabList>
-
                     <TabPanel className={cl.TabContent}>
                         <QueryClientProvider client={queryClientGetMusic}>
                             <Music/>

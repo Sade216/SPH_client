@@ -122,3 +122,47 @@
 .Link:hover{
     color: var(--text-01);
 }
+
+
+.Tabs{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: var(--text-01);
+    padding: 0;
+}
+.Tabs li{
+    position: relative;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 20px;
+    min-height: 50px;
+    text-align: left;
+    cursor: pointer;
+}
+.Tabs li:hover::before{
+    position: absolute;
+    content: '';
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--text-02);
+}
+.Tabs li[aria-selected=true]{
+    color: var(--accent-01)
+}
+.Tabs li[aria-selected=true]::before{
+    position: absolute;
+    content: '';
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--accent-01);
+}
+
+.TabContent{
+    color: var(--text-01)
+}

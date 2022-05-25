@@ -1,8 +1,8 @@
-/* @media (max-width:992px) {
-    input[type=search]{
-        width: 250px !important;
+@media (max-width:992px) {
+    .Wrapper{
+        display: none;
     }
-} */
+}
 .Wrapper{
     position: relative;
 }

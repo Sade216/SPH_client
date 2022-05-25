@@ -1,9 +1,6 @@
 @media (max-width:990px) {
-    /* .Bar{
-        width: auto;
-    } */
-    .Name{
-        width: 50px !important;
+    .Wrapper{
+        display: none;
     }
 }
 @media (max-width:1400px) {

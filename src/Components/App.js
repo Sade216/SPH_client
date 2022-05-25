@@ -1,7 +1,6 @@
 //React
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-
 //Стили
 import cl from './App.module.css'
 import { Container } from 'react-bootstrap'

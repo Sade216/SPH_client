@@ -1,6 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from 'react'
 
-import axios from 'axios'
 import { useAuth } from './UserContext';
 
 import {io} from 'socket.io-client'
@@ -40,7 +39,6 @@ export default function ChatContextProvider({children}) {
     const [privateMemberMsg, setPrivateMemberMgs] = useState({})
     const [newMessages, setNewMessages] = useState({})
 
-
     useEffect(()=>{
         socket.off('new-user').on('new-user', (payload)=>{
             setMembers(payload)
@@ -62,5 +60,6 @@ export default function ChatContextProvider({children}) {
         privateMemberMsg,
         newMessages,
     }
+
     return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>
 }

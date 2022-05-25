@@ -61,7 +61,8 @@ const Login = () => {
                   <input type='login' placeholder='Логин' value={loginReg} onChange={(e)=> setLoginReg(e.target.value)}/>
                   <input type='email' placeholder='Email' value={emailReg} onChange={(e)=> setEmailReg(e.target.value)}/>
                   <input type='password' placeholder='Пароль' value={passwordReg} onChange={(e)=> setPasswordReg(e.target.value)} />
-                  <input type='password' placeholder='Повторите пароль' value={passwordConfirmReg} onChange={(e)=> setPasswordConfirmReg(e.target.value)}/>
+                  <input type='password' placeholder='Повторите пароль' value={passwordConfirmReg} 
+                    onChange={(e)=> setPasswordConfirmReg(e.target.value)}/>
                 </div>
                 <div className={cl.Footer}>
                   <input type='button' 

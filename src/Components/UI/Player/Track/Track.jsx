@@ -119,9 +119,9 @@ const Track = (props) => {
           <NavLink className={cl.Author} to={`/@${track.author}`}>{track.author ? track.author : "Без автора???????"}</NavLink>
         </div>
           {currentUser &&
-            <div className={cl.Options}>
-              <HiOutlineDotsHorizontal className={isMenuOpen ? 'active' : ''} onClick={()=> MenuToggler()}/>
-              <div className={cl.MenuWrapper} ref={MenuBarRef}>
+            <div className={cl.Options} ref={MenuBarRef}>
+              <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
+              <div className={cl.MenuWrapper}>
                 <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
                   {currentUser.nickname !== track.author &&
                     <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>

@@ -11,11 +11,13 @@ import { NavLink } from 'react-router-dom'
 const Player = () => {
     const {currentTrack} = useMusic()
     const [togglePlayer, setTogglePlayer] = useState(false)
+    
     useEffect(()=>{
         if(currentTrack?.trackURL){
             setTogglePlayer(true)
         }
     },[currentTrack])
+
     const playerRef = useRef(null);
     const PlayerInstance = useRef(null)
     useOutsideAlerter(playerRef);

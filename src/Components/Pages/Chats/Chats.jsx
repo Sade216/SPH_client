@@ -64,13 +64,10 @@ const Chats = () => {
                 <Row style={{height: '100%'}}>
                     <Col md={4} style={{height: '100%'}}>
                         <div className={cl.CardWrapper}>
-                            <div className={cl.Header}>
-                                <div className={cl.Title}>Комнаты: {members.length}</div>
-                            </div>
                             <div className={cl.RoomsWrapper}>
                                 {
                                     rooms.map((room, index)=>(
-                                        <div key={index}>
+                                        <div className={cl.RoomWrapper} key={index}>
                                             {room}
                                         </div>
                                     ))
@@ -81,9 +78,6 @@ const Chats = () => {
                     <Col>
                         <div className={cl.CardWrapper}>
                             <div className={cl.ChatWrapper}>
-                                <div className={cl.Header}>
-                                    <div className={cl.Title}>{currentRoom}:</div>
-                                </div>
                                 <div className={cl.ChatWindow} >
                                     {messages.map((message, index)=>(
                                         <>
@@ -93,13 +87,13 @@ const Chats = () => {
                                     <div ref={(el) => { messagesEnd = el }}/>
                                 </div>
                                 <div className={cl.Footer}>
+                                    {/* <div className={cl.PinnedObject}>
+                                        12332123
+                                    </div> */}
                                     <div className={cl.InputWrapper}>
                                         <AiOutlinePaperClip className={cl.Buttton}/>
                                         <div className={cl.TextWrapper}>
                                             <textarea className={cl.MsgText} type='text' placeholder='Привет...' value={message} onChange={(e)=>setMessage(e.target.value)}/>
-                                            {/* <div className={cl.PinnedObject}>
-                                            12332123
-                                            </div>*/}
                                         </div>
                                         <AiOutlineSend className={cl.SendButtton} onClick={handleSubmit}/>
                                     </div>

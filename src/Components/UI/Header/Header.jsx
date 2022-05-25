@@ -14,17 +14,17 @@ const Header = () => {
         
         <Container className={cl.Header}>
           <Row>
-            <Col md={4}>
+            <Col lg={4}>
               <NavLink className={cl.Logo} to='/'>SPH</NavLink>
             </Col>
             
             <Col>
               <SearchBar/>
             </Col>
-            <Col md={2}>
+            <Col lg={2}>
               <UserBar/>
             </Col>
-            <Col md={1}>
+            <Col lg={1}>
               <MenuBar/>
             </Col>
           </Row>

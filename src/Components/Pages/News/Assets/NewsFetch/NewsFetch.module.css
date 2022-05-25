@@ -1,0 +1,51 @@
+.PaginationWrapper{
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    align-items: center;
+}
+.PaginationWrapper button{
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid var(--accent-01);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 50px;
+    border-radius: 6px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.PaginationWrapper button[disabled]{
+    border: 1px solid var(--text-02);
+    color: var(--text-02);
+    cursor: no-drop;
+}
+.PaginationWrapper button[disabled]:hover{
+    background-color: transparent;
+    
+}
+.PaginationWrapper button:hover{
+    background-color: var(--accent-01);
+}
+.PageCounter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    text-align: center;
+    background-color: var(--background-00);
+    border-radius: 6px;
+    border: none;
+    color: var(--text-01);
+    width: 60px;
+    font-size: 18px;
+}
+.PageCounter::-webkit-outer-spin-button,
+.PageCounter::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

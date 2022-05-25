@@ -11,7 +11,7 @@ import {IoIosArrowDown} from 'react-icons/io'
 import {IoCloseSharp} from 'react-icons/io5'
 
 const MenuBar = () => {
-    const { currentUser } = useAuth();
+    const { currentUser, isAdmin, logout} = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const MenuBarRef = useRef(null);
@@ -52,6 +52,22 @@ const MenuBar = () => {
                     <NavLink className={cl.Link} to='/lib' onClick={()=> setIsMenuOpen(false)}>Библиотека</NavLink>
                     {currentUser &&
                         <NavLink className={cl.Link} to='/msg' onClick={()=> setIsMenuOpen(false)}>Чаты</NavLink>
+                    }
+                    {isAdmin && <NavLink className={cl.Link} to='/admin'>Админ</NavLink>}
+                    {currentUser && 
+                        <NavLink className={cl.Link} to={'/@' + currentUser.nickname} onClick={()=> setIsMenuOpen(false)}>Профиль</NavLink>
+                    }
+                    {/* {currentUser && 
+                        <button className={cl.Link}>
+                        <Settings mode='header'/>
+                        </button>
+                    } */}
+                    <NavLink className={cl.Link} to='/about' onClick={()=> setIsMenuOpen(false)}>О нас</NavLink>
+                    {!currentUser &&
+                        <NavLink className={cl.Link} to='/login' onClick={()=> setIsMenuOpen(false)}>Логин/Регистрация</NavLink>
+                    }
+                    {currentUser &&
+                        <button className={cl.Link} onClick={logout}>Выйти</button>
                     }
                 </Offcanvas.Body>
             </Offcanvas>

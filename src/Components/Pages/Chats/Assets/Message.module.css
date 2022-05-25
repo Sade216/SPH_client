@@ -8,13 +8,9 @@
     padding: 10px;
     align-items: flex-end;
 }
-.MessageWrapper:not(:first-child){
-    margin: 10px 0 0 0;
-}
 .MessageWrapper:hover{
-    background-color: var(--background-03);
+    background-color: var(--background-02);
 }
-
 .MessageWrapperRevert{
     display: flex;
     flex-direction: row;
@@ -25,11 +21,8 @@
     padding: 10px;
     align-items: flex-end;
 }
-.MessageWrapperRevert:not(:first-child){
-    margin: 10px 0 0 0;
-}
 .MessageWrapperRevert:hover{
-    background-color: var(--background-03);
+    background-color: var(--background-02);
 }
 
 

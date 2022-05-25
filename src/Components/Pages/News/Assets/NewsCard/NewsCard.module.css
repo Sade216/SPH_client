@@ -1,104 +1,113 @@
-.TrackWrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 6px;
-    height: 70px;
-    width: 100%;    
-    background-color: var(--background-02);
-    box-shadow: 2px 2px 4px 1px var(--background-00-05);
-    margin: 10px 0;
-    /* position: relative; */
+.CardWrapper{
+    padding: 20px;
+    margin-bottom: 24px;
 }
-.TrackWrapper:hover{
-    background-color: var(--background-03);
-}
-
-
-.ImageWrapper{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    border-radius: 6px;
-    margin-left: 10px;
-    position: relative;
-}
-.Image{
-    height: 50px;
-    width: 50px;
-    border-radius: 6px;
-    background-size: cover;
-    background-position: center;
-}
-.PlayButton{
-    position: absolute;
-    opacity: 0;
-    height: 50px;
-    width: 50px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity .15s ease;
-    background-color: var(--background-00);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.TrackWrapper:hover .PlayButton{
-    opacity: 0.9;
-}
-.PlayButton svg{
-    color: var(--text-01);
-    width: 40px;
-    height: 40px;
-}
-.PlayButton input[type=file]{
-    display: none;
-}
-
-.Main{
+.Header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: calc(100% - 90px);
     align-items: center;
-}
-
-.Credentials{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: calc(100% - 20px);
+    margin-bottom: 18px;
 }
 .Title{
+    font-size: 22px;
+    font-weight: 700;
     color: var(--text-01);
-    font-size: 16px;
-    /* width: calc(100% - 2rem); */   
-    width: calc(100% - 20px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    white-space: nowrap;
-
 }
 .Author{
+    font-size: 16px;
     color: var(--text-02);
-    font-size: 14px;
     text-decoration: none;
 }
-.Author:hover{
+.Tags{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+.Tag{
+    background-color: var(--background-03);
+    margin-right: 5px;
+    padding: 2px 6px;
+    font-size: 14px;
+    font-style: italic;
+    border-radius: 6px;
+    color: var(--text-01);
+    text-decoration: none;
+}
+.Text{
+    color: var(--text-01);
+    font-size: 16px;
+    font-weight: 400;
+}
+.Footer{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+.Row{
+    display: flex;
+    flex-direction: row;
+}
+.LikesCounter{
+    font-size: 22px;
+    color: var(--text-02);
+    margin-right: 20px;
+    font-weight: 500;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+.Element{
+    margin-right: 10px;
+    font-size: 24px;
+    color: var(--text-02);
+    cursor: pointer;
+    display: flex;
+}
+.Element svg{
+    position: relative;
+    align-self: center;
+}
+.Element svg[active='0']{
     color: var(--accent-01);
 }
+.Element:hover{
+    color: var(--accent-01);
+}
+
+.Element svg[disabled]{
+    cursor: default;
+}
+.Element svg[disabled]:hover{
+    color: var(--text-02);
+}
+
+.Link{
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+}
+.Link:hover{
+    color: var(--text-02)
+}
+.Link:global(.active){
+    color: var(--accent-01);
+}
+
 .Options{
     opacity: 0.5;
     color: var(--text-01);
     font-size: 26px;
     transition: opacity .1s ease;
 }
-.TrackWrapper:hover .Options{
+.CardWrapper:hover .Options{
     opacity: 1;
     color: var(--text-01);
     font-size: 26px;
@@ -157,6 +166,7 @@
     background-color: var(--background-02);
     box-shadow: -5px 5px 10px 1px var(--background-00);
     animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
 }
 .MenuOpenWrapper:global(.active){
     display: flex;
@@ -177,7 +187,7 @@
       top: 0px;
     }
 }
-.Link{
+.MenuLink{
     text-decoration: none;
     padding: 0 15px;
     height: 50px;
@@ -189,9 +199,9 @@
     font-size: 16px;
     cursor: pointer;
 }
-.Link:hover{
+.MenuLink:hover{
     color: var(--text-02)
 }
-.Link:global(.active){
+.MenuLink:global(.active){
     color: var(--accent-01);
 }

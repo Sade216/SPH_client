@@ -3,6 +3,7 @@ import React from 'react'
 import cl from './Profile.module.css'
 import card from '../../UI/Card.module.css'
 import {Container, Row, Col} from 'react-bootstrap'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import AvatarUpload from './Functions/ControlPanel/AvatarUpload/AvatarUpload'
 import AddFiles from './Functions/ControlPanel/AddFiles/AddFiles'
@@ -71,22 +72,36 @@ const Profile = () => {
                       </div>
                     </div>
                   </div>
+                  
                   <div className={cl.ActionGrid}>
-
-                    {/* <button className={cl.ActionBtn}>
-                      <BsPencil className={cl.ActionBtnSvg}/>
-                      Изменить
-                    </button> */}
                     <Settings mode='profile'/>
                     <AddFiles/>
                   </div>
+
                   <Collection/>
                   <FollowList userFollowers={currentUser.youFollow}/>
+
                 </div>
               </Col>
               <Col>
                 <About/>
-                <CreatePost/>
+                <Tabs>
+                  <TabList className={cl.Tabs}>
+                    <Tab>Посты</Tab>
+                    <Tab>Избранное</Tab>
+                    <Tab>Подборки</Tab>
+                  </TabList>
+                  <TabPanel className={cl.TabContent}>
+                      <CreatePost/>
+                      <h3>Пользователь ничего не публикует</h3>
+                  </TabPanel>
+                  <TabPanel className={cl.TabContent}>
+                      <h3>Избранное</h3>
+                  </TabPanel>
+                  <TabPanel className={cl.TabContent}>
+                      <h3>Подборки</h3>
+                  </TabPanel>
+                </Tabs>
               </Col>
             </Row>
           </Container>

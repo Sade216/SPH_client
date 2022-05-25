@@ -15,17 +15,16 @@ import AuthContext from './Contexts/UserContext';
 import MusicContext from './Contexts/MusicContext'
 import ChatContext from './Contexts/ChatContext'
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthContext>
-        <MusicContext>
-          <ChatContext>
-            <App />
-          </ChatContext>
-        </MusicContext>
-      </AuthContext>
+        <AuthContext>
+          <MusicContext>
+            <ChatContext>
+              <App />
+            </ChatContext>
+          </MusicContext>
+        </AuthContext>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

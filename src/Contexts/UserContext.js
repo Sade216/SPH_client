@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 import { ToastSuccses } from '../Components/UI/Toasts'
 
-// const serverURL = 'http://localhost:5000/api';
-// const serverURLWS = 'http://localhost:5000';
-const serverURL = 'https://samplepackshouse-server.herokuapp.com/api';
-const serverURLWS = 'https://samplepackshouse-server.herokuapp.com/';
+const serverURL = 'http://localhost:5000/api';
+const serverURLWS = 'http://localhost:5000';
+// const serverURL = 'https://samplepackshouse-server.herokuapp.com/api';
+// const serverURLWS = 'https://samplepackshouse-server.herokuapp.com/';
 
 const AuthContext = createContext({
   registerForm: ()=> Promise, 
@@ -79,6 +79,7 @@ export default function AuthContextProvider({children}) {
           navigate('/')
         })
   }
+
   function loginForm(nickname, password) {
       axios({
           method: 'POST',
@@ -97,6 +98,7 @@ export default function AuthContextProvider({children}) {
           navigate('/')
         })
   }
+  
   function logout(){
     var answer = window.confirm("Вы уверены?");
     if (answer) {
