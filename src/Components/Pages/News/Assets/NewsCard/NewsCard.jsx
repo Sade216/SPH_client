@@ -58,15 +58,18 @@ const NewsCard = ({news, index}) => {
                         <FaRegComment/>
                         </div>
                     </div>
-                    <div className={cl.Options} ref={MenuBarRef}>
-                        <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
-                        <div className={cl.MenuWrapper} >
-                        <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
-                            <button disabled className={cl.MenuLink} onClick={()=> MenuToggler()}>Изменить</button>
-                            <button className={cl.MenuLink} onClick={()=> MenuToggler()}>Удалить</button>
+                    {isAdmin | isModerator ?
+                        <div className={cl.Options} ref={MenuBarRef}>
+                            <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
+                            <div className={cl.MenuWrapper} >
+                            <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
+                                <button disabled className={cl.MenuLink} onClick={()=> MenuToggler()}>Изменить</button>
+                                <button className={cl.MenuLink} onClick={()=> MenuToggler()}>Удалить</button>
+                            </div>
+                            </div>
                         </div>
-                        </div>
-                    </div>
+                        : null
+                    }
                 </div>
             </div>
         </div>
