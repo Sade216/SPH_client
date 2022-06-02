@@ -6,12 +6,15 @@ import NewsFetch from './Assets/NewsFetch/NewsFetch'
 import {Container, Row, Col, Spinner} from 'react-bootstrap'
 import card from '../../UI/Card.module.css'
 import cl from './News.module.css'
-import { useAuth } from '../../../Contexts/UserContext'
+import { useSelector } from 'react-redux'
 
 
 const News = () => {
-  const {currentUser} = useAuth();
+  document.title = 'Новости'
+
+  const {currentUser} = useSelector(state => state.user.user);
   
+
   return (
     <div className={cl.Wrapper} >
       <Container >

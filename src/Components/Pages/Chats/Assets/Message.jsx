@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useAuth } from '../../../../Contexts/UserContext'
 
 import cl from './Message.module.css'
 import moment from 'moment'
+import { useSelector } from 'react-redux'
 
 const Message = (props) => {
-    const {currentUser} = useAuth();
+    const currentUser = useSelector(state => state.user.user)
+
     const message = props.message
     const from = message.from
     return (
@@ -15,7 +16,7 @@ const Message = (props) => {
                 {from.nickname !== currentUser.nickname && 
                     <div className={cl.ImageWrapper}>
                         <div className={cl.Image} 
-                        style={{backgroundImage: `url(${from.avatarURL ? from.avatarURL : './assets/questionmark.jpg'})`}}>
+                            style={{backgroundImage: `url(${!from.avatarURL || from.avatarURL === 'none' ? './assets/questionmark.jpg' : from.avatarURL})`}}>
                         </div>
                     </div>
                 }

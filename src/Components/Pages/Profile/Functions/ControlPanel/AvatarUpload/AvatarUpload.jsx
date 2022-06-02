@@ -1,15 +1,16 @@
 import React, {useRef} from 'react'
 
-import { useAuth } from '../../../../../../Contexts/UserContext';
-
 import {BsCamera} from 'react-icons/bs'
 import cl from './AvatarUpload.module.css'
 
 import axios from 'axios'
+import { serverURL } from '../../../../../../Redux/config/axios';
+
+import { useSelector } from 'react-redux';
 
 const AvatarUpload = () => {
-  const { currentUser, serverURL, getUser } = useAuth();
-  
+  const currentUser = useSelector(state => state.user.user)
+
   const imageRef = useRef();
   function ChangeImage(){
     imageRef.current.click();
@@ -38,12 +39,10 @@ const AvatarUpload = () => {
         },
       }).then((res)=>{
         console.log(res);
-        getUser()
       })
   }
   return (
     <>
-        {/* <img src={currentUser.avatarURL === 'none' ? '' : currentUser.avatarURL} alt={currentUser.nickname}/> */}
         <div className={cl.ProfileImage} style={{backgroundImage: `url(${currentUser.avatarURL === 'none' ? './assets/questionmark.jpg' : currentUser.avatarURL})`}}></div>
         <div className={cl.ImageUploader} onClick={()=>ChangeImage()}>
         <input type='file' ref={imageRef} accept="image/*" onChange={handleFileSelect}/>

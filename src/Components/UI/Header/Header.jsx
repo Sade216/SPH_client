@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import cl from './Header.module.css'
-import {Container, Row, Col, Button, Offcanvas} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 
 import SearchBar from './SearchBar/SearchBar'
 import UserBar from './UserBar/UserBar'

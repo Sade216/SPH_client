@@ -7,9 +7,9 @@ import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
 import NewsCard from '../NewsCard/NewsCard'
 
-import { useAuth } from '../../../../../Contexts/UserContext'
-
 import axios from 'axios'
+
+import {serverURL} from '../../../../../Redux/config/axios'
 
 import {
   useQuery,
@@ -21,8 +21,6 @@ import {
 const QueryClientGetNews = new QueryClient();
 
 const NewsFetchQuery = () => {
-
-    const {serverURL} = useAuth();
     
     //--------------------НОВОСТИ--------------------
     const [page, setPage] = useState(1);
@@ -56,7 +54,7 @@ const NewsFetchQuery = () => {
                 <>
                     {
                     data.map((news, index)=>(
-                        <NewsCard news={news} index={index}/>
+                        <NewsCard news={news} key={index}/>
                     ))
                 }
                 <div className={cl.PaginationWrapper}>

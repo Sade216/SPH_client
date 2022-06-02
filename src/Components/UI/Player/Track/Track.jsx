@@ -1,16 +1,23 @@
 import React, {useState, useEffect, useRef} from 'react'
 
 import cl from './Track.module.css'
-
 import {BsPlay, BsPause} from 'react-icons/bs'
 import {HiOutlineDotsHorizontal} from 'react-icons/hi'
+
 import { NavLink } from 'react-router-dom'
+
 import axios from 'axios'
-import { useAuth } from '../../../../Contexts/UserContext'
-import { useMusic } from '../../../../Contexts/MusicContext'
+import {serverURL} from '../../../../Redux/config/axios'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
+import { deleteTrack } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
 const Track = (props) => {
-  const {currentUser} = useAuth()
+
+  const dispatch = useDispatch()
+  const currentUser = useSelector(state => state.user.user)
+  const currentTrack = useSelector(state => state.music.currentTrack)
 
   /*Menu*/
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,9 +40,6 @@ const Track = (props) => {
       setIsMenuOpen(!isMenuOpen);
   }
   /*Menu*/
-
-  const {serverURL, getUser} = useAuth()
-  const {ChangeTrack, currentTrack} = useMusic()
 
   const [track, setTrack]= useState(null)
 
@@ -79,24 +83,15 @@ const Track = (props) => {
   function ChangeTrackData(){
 
   }
-
   function AddToFeature(){
-    
+
   }
 
   function DeleteTrack(){
-    axios({
-      method: 'POST',
-      withCredentials: true,
-      url: serverURL + `/music/deleteTrack`,
-      data: track,
-    }).then((res)=>{
-      console.log(res.data)
-      getUser()
-    })
+    dispatch(deleteTrack(track))
   }
   const PlayButton = () => {
-    ChangeTrack(track)
+    dispatch(musicSlice.actions.musicChangeCurrentTrack(track))
   }
 
   return ( track &&
@@ -106,9 +101,9 @@ const Track = (props) => {
         {props.mode !== 'preview' &&
           <div className={cl.PlayButton} onClick={PlayButton}>
             {currentTrack?.title === track.title ?
-              <BsPause/>
+              <BsPause className={cl.BsPause}/>
               :
-              <BsPlay/>
+              <BsPlay className={cl.BsPlay}/>
             }
           </div>
         }

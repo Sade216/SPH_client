@@ -5,9 +5,8 @@ import card from '../../UI/Card.module.css'
 import {Container, Col, Row} from 'react-bootstrap'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import { useAuth } from '../../../Contexts/UserContext'
-
 const Admin = () => {
+  document.title = 'Админ-панель'
 
   return (
     <div className={cl.Wrapper}>

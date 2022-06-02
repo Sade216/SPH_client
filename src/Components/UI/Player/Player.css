@@ -1,3 +1,15 @@
+@media (max-width:572px){
+  .rhap_controls-section{
+      flex-direction: column;
+  }
+  .rhap_volume-controls{
+    justify-content: center !important;
+    width: 100%;
+  }
+  .rhap_main-controls{
+    flex: 0 1 70px !important;
+  }
+}
 @media (max-width:992px){
   .rhap_container{
     margin: 0 10px !important;
@@ -9,6 +21,15 @@
   }
   .rhap_progress-section{
     margin: 0 !important;
+  }
+  .rhap_progress-container{
+    margin: 25px calc(10px + 1%) 0 !important;
+  }
+  .rhap_additional-controls{
+    flex: 1 0 auto !important;
+  }
+  .rhap_volume-container{
+    flex: 0 1 160px !important;
   }
 }
 .rhap_container {
@@ -70,8 +91,12 @@
   }
   
   .rhap_progress-section {
+    position: relative ;
     display: flex;
-    flex: 3 1 auto;
+    flex-direction: column;
+    flex-grow: 4;
+    flex-shrink: 2;
+    flex-basis: auto;
     align-items: center;
     margin: 0 20px;
   }
@@ -82,20 +107,31 @@
     height: 20px;
     flex: 1 0 auto;
     align-self: center;
-    margin: 0 calc(10px + 1%);
+    margin: 15px calc(10px + 1%) 0;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
+    width: 100%;
   }
   .rhap_progress-container:focus:not(:focus-visible) {
     outline: 0;
   }
   
   .rhap_time {
+    padding: 3px 0;
     color: var(--text-01);
     font-size: 18px;
     user-select: none;
     -webkit-user-select: none;
+  }
+
+  .rhap_current-time{
+    position: absolute;
+    left: 0;
+  }
+  .rhap_total-time{
+    position: absolute;
+    right: 0;
   }
   
   .rhap_progress-bar {
@@ -150,7 +186,7 @@
   
   .rhap_additional-controls {
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     align-items: center;
   }
   

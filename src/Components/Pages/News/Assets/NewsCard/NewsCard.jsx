@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {NavLink} from 'react-router-dom'
-import { useAuth } from '../../../../../Contexts/UserContext'
 
 import {HiOutlineDotsHorizontal} from 'react-icons/hi'
 import {BiLike} from 'react-icons/bi'
@@ -9,8 +8,10 @@ import {FaRegComment} from 'react-icons/fa'
 import card from '../../../../UI/Card.module.css'
 import cl from './NewsCard.module.css'
 
+import {useSelector} from 'react-redux'
+
 const NewsCard = ({news, index}) => {
-    const { currentUser, isAdmin, isModerator } = useAuth();
+    const {currentUser, role} = useSelector(state => state.user.user)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -58,7 +59,7 @@ const NewsCard = ({news, index}) => {
                         <FaRegComment/>
                         </div>
                     </div>
-                    {isAdmin | isModerator ?
+                    {role === 'admin' | role === 'moderator' ?
                         <div className={cl.Options} ref={MenuBarRef}>
                             <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
                             <div className={cl.MenuWrapper} >

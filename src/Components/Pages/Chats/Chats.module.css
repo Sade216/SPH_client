@@ -83,6 +83,16 @@
     margin-top: 20px;
 }
 
+/* min-height: 36px;
+width: 100%;
+resize: none;
+max-height: 200px;
+overflow-y: auto;
+overflow-x: hidden;
+line-height: 17px;
+word-wrap: break-word; */
+
+
 /*send msg*/
 .InputWrapper{
     display: flex;

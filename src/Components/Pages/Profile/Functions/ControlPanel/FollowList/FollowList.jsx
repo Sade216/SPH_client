@@ -6,14 +6,8 @@ import cl from './FollowList.module.css'
 
 import card from '../../../../../UI/Card.module.css'
 
-const FollowList = (props) => {
+const FollowList = ({userFollowers}) => {
 
-    const [users, setUsers] = useState([])
-
-
-    useEffect(()=>{
-        setUsers(props.userFollowers)
-    },[])
     return (
         <div className={card.Wrapper}>
             <div className={cl.CardWrapper}>
@@ -21,9 +15,12 @@ const FollowList = (props) => {
                     <div className={cl.Title}>Ваши подписки:</div>
                     <button className={cl.Link}>Полный список</button>
                 </div>
-                {users.map((id, index)=>(
+                {userFollowers ? userFollowers.map((id, index)=>(
                     <UserCard id={id} key={index}/>
-                ))}
+                ))
+                : 
+                    <div className={cl.Error}>Пользователь никого не отслеживает</div>
+                }
             </div>
         </div>
     )

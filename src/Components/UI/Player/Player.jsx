@@ -1,15 +1,19 @@
 import React, {useState, useRef, useEffect} from 'react'
 
-import cl from './Player.module.css'
-import {IoIosMusicalNotes} from 'react-icons/io'
-import { useMusic } from '../../../Contexts/MusicContext'
-
-import AudioPlayer from 'react-h5-audio-player';
-import './Player.css';
 import { NavLink } from 'react-router-dom'
 
+import cl from './Player.module.css'
+import './Player.css';
+import {IoIosMusicalNotes} from 'react-icons/io'
+
+import AudioPlayer from 'react-h5-audio-player';
+
+import {useSelector} from 'react-redux'
+
 const Player = () => {
-    const {currentTrack} = useMusic()
+    const MusicState = useSelector(state => state.music)
+    const {currentTrack} = MusicState
+
     const [togglePlayer, setTogglePlayer] = useState(false)
     
     useEffect(()=>{

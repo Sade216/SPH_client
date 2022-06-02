@@ -22,9 +22,11 @@
         justify-content: center;
     }
     .ImageWrapper{
-        width: 300px !important;
-        height: 300px !important;
-        margin: 0 0 15px 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 400px !important;
+        max-height: 400px !important;
+        margin: 15px 0 15px 0 !important;
     }
     .Image{
         width: 100% !important;

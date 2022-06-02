@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-export function ToastSuccses(response){
-    toast.success(response.data, {
+export function ToastSuccess(response){
+    toast.success(response, {
         theme: "dark",
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -13,10 +13,10 @@ export function ToastSuccses(response){
     })
 }
 export function ToastError(response){
-    toast.error(response.data, {
+    toast.error(response, {
         theme: "dark",
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 6000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -25,7 +25,7 @@ export function ToastError(response){
     })
 }   
 export function ToastWarn(response){
-    toast.warning(response.data, {
+    toast.warning(response, {
         theme: "dark",
         position: "bottom-right",
         autoClose: 5000,
@@ -37,7 +37,7 @@ export function ToastWarn(response){
     })
 }   
 export function ToastInfo(response){
-    toast.info(response.data, {
+    toast.info(response, {
         theme: "dark",
         position: "bottom-right",
         autoClose: 5000,

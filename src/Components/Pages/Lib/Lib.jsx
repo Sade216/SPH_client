@@ -8,7 +8,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Track from '../../UI/Player/Track/Track'
 import axios from 'axios';
-import { useAuth } from '../../../Contexts/UserContext';
+
+import { serverURL } from '../../../Redux/config/axios';
 
 import {
     useQuery,
@@ -19,8 +20,8 @@ import {
 const queryClientGetMusic = new QueryClient()
 
 const Lib = () => {
-    const { serverURL } = useAuth()
-
+    document.title = 'Библиотека'
+    
     function Music(){
 
         const [page, setPage] = useState(1);

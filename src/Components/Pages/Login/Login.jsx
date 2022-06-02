@@ -4,12 +4,15 @@ import cl from './Login.module.css'
 import card from '../../UI/Card.module.css'
 import {Container, Col, Row} from 'react-bootstrap'
 
-import { useAuth } from '../../../Contexts/UserContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { UserLogin, UserRegistration } from '../../../Redux/reducers/asyncActions/fetchUser'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  document.title = 'Логин'
 
-  const { loginForm, registerForm } = useAuth()
-
+  const dispatch = useDispatch()
+  const {currentUser} = useSelector(state => state.user)
   const [loginLog, setLoginLog] = useState('');
   const [passwordLog, setPasswordLog] = useState('');
 
@@ -19,11 +22,11 @@ const Login = () => {
   const [passwordConfirmReg,setPasswordConfirmReg] = useState('');
 
   function Log(){
-    loginForm(loginLog, passwordLog)
+    dispatch(UserLogin(loginLog, passwordLog))
   }
   function Reg(){
     if(passwordReg === passwordConfirmReg){
-      registerForm(loginReg, emailReg, passwordReg)
+      dispatch(UserRegistration(loginReg, emailReg, passwordReg))
     }
   }
 

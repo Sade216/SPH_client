@@ -1,18 +1,22 @@
 import React, {useState, useRef} from 'react'
 
-import {useAuth} from '../../../../../../Contexts/UserContext'
-
 import Modal from '../../../../../UI/Modal/Modal'
-
 import cl from './AddFiles.module.css'
 import modal from '../../../../../UI/Modal/Modal.module.css'
 import {IoMusicalNotesOutline} from 'react-icons/io5'
+import { ToastSuccess } from '../../../../../UI/Toasts'
 
 import Track from '../../../../../UI/Player/Track/Track'
 
-import axios from 'axios'
+import {useSelector, useDispatch} from 'react-redux'
+
+import { addNewTrack } from '../../../../../../Redux/reducers/asyncActions/fetchMusic'
+
 const AddFiles = () => {
-  const {currentUser, serverURL} = useAuth()
+  const currentUser = useSelector(state => state.user.user)
+
+  const dispatch = useDispatch()
+
   const [showModal, setShowModal] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -65,33 +69,16 @@ const AddFiles = () => {
     formDataFiles.append("tags", tags);
     formDataFiles.append("desc", desc);
 
-    axios({
-        method: "post",
-        url: serverURL + "/music/addTrack",
-        data: formDataFiles,
-        withCredentials: true,
-        headers: {
-          accept: 'application/json',
-          'content-type': 'multipart/form-data',
-        },
-      }).then((res)=>{
-        console.log(res.status)
-        if(res.status === 400 | res.status === 404){
-          console.log(res)
-        }
-        if(res.status === 200){
-          console.log(res.data)
-          setTitle('')
-          setAuthor('')
-          setImage('')
-          setTrack('')
-          setTags('')
-          setDesc('')
-          setShowModal(false)
-          setIsLoading(false)
-        }
-      })
-      
+    dispatch(addNewTrack(formDataFiles)).then((res)=>{
+      setTitle('')
+      setAuthor('')
+      setImage('')
+      setTrack('')
+      setTags('')
+      setDesc('')
+      setShowModal(false)
+      setIsLoading(false)
+    })
   }
 
   return (

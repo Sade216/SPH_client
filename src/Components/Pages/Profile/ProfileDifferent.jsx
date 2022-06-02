@@ -5,8 +5,6 @@ import card from '../../UI/Card.module.css'
 import {Container, Row, Col} from 'react-bootstrap'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
-import { useAuth } from '../../../Contexts/UserContext'
-
 import Collection from './Functions/ControlPanel/Collection/Collection'
 import About from './Functions/MainFeed/About/About'
 import AddToFollow from './Functions/ControlPanel/AddToFollow/AddToFollow'
@@ -14,13 +12,17 @@ import FollowList from './Functions/ControlPanel/FollowList/FollowList'
 
 // import {IoSettingsOutline} from 'react-icons/io5'
 import axios from 'axios'
+import { serverURL } from '../../../Redux/config/axios'
+
+import { useSelector } from 'react-redux'
 
 const Profile = () => {
-  const { serverURL, currentUser } = useAuth();
 
   const [pageUser, setPageUser] = useState(null)
-
   const User = window.location.pathname.slice(2).toLocaleLowerCase();
+
+  const currentUser = useSelector(state => state.user.user)
+  const {role, isAuthenticated} = currentUser
 
   function getUserPage(){
     axios({
@@ -37,6 +39,8 @@ const Profile = () => {
   useEffect(()=>{
     getUserPage()
   },[])
+
+  document.title = `Профиль - @${pageUser?.nickname}`
 
   function AlternateBackgroundImage(){
     let string = ' ';
@@ -62,7 +66,7 @@ const Profile = () => {
         <div className={cl.Wrapper}>
           <Container>
             <Row>
-              <Col lg={4}>
+              <Col xl={4} lg={5} md={12}>
                 <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.ProfileAvatar}>
@@ -95,17 +99,18 @@ const Profile = () => {
                       </div>
                   </div>
                 </div>
-                <div className={cl.ActionGrid}>
-                  {currentUser &&
-                    <AddToFollow id={pageUser.nickname}/>
-                  }
-                </div>
+                {isAuthenticated && 
+                  <div className={cl.ActionGrid}>
+                      <AddToFollow id={pageUser.nickname}/>
+                  </div>
+                }
                 {/* Передать nickname через props
                 Добавить followList функцию */}
-                <Collection/>
+                <Collection trackList={pageUser.trackList}/>
+                <FollowList FollowList={pageUser.you_follow}/>
               </Col>
-              <Col>
-                <About/>
+              <Col xl={8} lg={7} md={12}>
+                <About about={pageUser.about} pref_genres={pageUser.pref_genres}/>
                 <Tabs>
                   <TabList className={cl.Tabs}>
                     <Tab>Посты</Tab>

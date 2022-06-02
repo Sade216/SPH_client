@@ -14,12 +14,15 @@ import CreatePost from './Functions/MainFeed/CreatePost/CreatePost'
 import FollowList from './Functions/ControlPanel/FollowList/FollowList'
 import Collection from './Functions/ControlPanel/Collection/Collection'
 
-import { useAuth } from '../../../Contexts/UserContext'
-
 import {BsPencil} from 'react-icons/bs'
 
+import { useSelector } from 'react-redux'
+
 const Profile = () => {
-  const { currentUser } = useAuth();
+  const currentUser = useSelector(state => state.user.user)
+  const {role, isAuthenticated} = currentUser
+
+  document.title = `Профиль - @${currentUser.nickname}`
 
   function AlternateBackgroundImage(){
     let string = ' ';
@@ -30,7 +33,7 @@ const Profile = () => {
   }
 
   return (
-    currentUser && 
+    isAuthenticated && 
       <div>
         <div className={cl.ProfileBackImage} style={
           {background: `linear-gradient(rgba(10,10,20,0.5) -150% , var(--background-01) 80%), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px'><text x='-30' y='27%' fill='white' font-size='3rem' font-weight='600' opacity='0.8'>${AlternateBackgroundImage()}</text><text x='-15' y='60%' fill='white' font-size='4rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text><text x='-5' y='93%' fill='white' font-size='3rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text></svg>")`}
@@ -38,7 +41,7 @@ const Profile = () => {
         <div className={cl.Wrapper}>
           <Container>
             <Row>
-              <Col lg={4}>
+              <Col xl={4} lg={5} md={12}>
                 <div className={cl.ControlWrapper}>
                   <div className={card.Wrapper}>
                     <div className={cl.CardWrapper}>
@@ -78,13 +81,13 @@ const Profile = () => {
                     <AddFiles/>
                   </div>
 
-                  <Collection/>
+                  <Collection trackList={currentUser.trackList}/>
                   <FollowList userFollowers={currentUser.youFollow}/>
 
                 </div>
               </Col>
-              <Col>
-                <About/>
+              <Col xl={8} lg={7} md={12}>
+                <About about={currentUser.about} pref_genres={currentUser.pref_genres}/>
                 <Tabs>
                   <TabList className={cl.Tabs}>
                     <Tab>Посты</Tab>

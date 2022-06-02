@@ -2,11 +2,10 @@ import React, {useState, useEffect} from 'react'
 
 import cl from './AddToFollow.module.css'
 import {BsPlusCircle} from 'react-icons/bs'
-import axios from 'axios'
-import { useAuth } from '../../../../../../Contexts/UserContext'
 
+import axios from 'axios'
+import { serverURL } from '../../../../../../Redux/config/axios'
 const AddToFollow = (props) => {
-    const {currentUser, serverURL} = useAuth()
     const [isFollowed, setIsFollowed] = useState('loading')
 
     function GetIsFollowed(){
@@ -25,7 +24,6 @@ const AddToFollow = (props) => {
             withCredentials: true,
             url: serverURL + `/user/setFollow/${props.id}`,
         }).then((res)=>{
-            console.log(res.data)
             setIsFollowed(res.data)
         })
     }
@@ -36,7 +34,6 @@ const AddToFollow = (props) => {
             withCredentials: true,
             url: serverURL + `/user/setUnFollow/${props.id}`,
         }).then((res)=>{
-            console.log(res.data)
             setIsFollowed(res.data)
         })
     }

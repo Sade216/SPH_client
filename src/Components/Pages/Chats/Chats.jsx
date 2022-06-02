@@ -7,38 +7,36 @@ import {AiOutlineSend, AiOutlinePaperClip} from 'react-icons/ai'
 
 import Message from './Assets/Message'
 
-import {useChat} from '../../../Contexts/ChatContext'
-import { useAuth } from '../../../Contexts/UserContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { chatSlice } from '../../../Redux/reducers/ChatReducer'
 
-import axios from 'axios'
+import {socket} from '../../../Redux/reducers/ChatReducer'
 
 const Chats = () => {
-    const {currentUser, serverURL} = useAuth()
-    //socket
-    const {socket, members, rooms, currentRoom, messages, setCurrentRoom, setRooms, setMessages} = useChat()
+    document.title = 'Чаты'
 
-    function getRooms(){
-        axios({
-            method: 'get',
-            url: serverURL + '/chat/'
-        }).then((res)=>{
-            setRooms(res.data)
-        })
-    }
+    const dispatch = useDispatch()
+    const currentUser = useSelector(state => state.user.user)
+    const {members, rooms, currentRoom, messages} = useSelector(state => state.chat)
 
     useEffect(()=>{
-        setCurrentRoom('general')
-        getRooms()
+        dispatch(chatSlice.actions.chatChangeRoom('general'))
+
         socket.emit('join-room', 'general')
         socket.emit('new-user')
         socket.off('room-messages').on('room-messages', (roomMessages)=>{
-            setMessages(roomMessages)
+            dispatch(chatSlice.actions.chatSetMessages(roomMessages))
         })
     },[])
-    
+
+    //scroll
+    var messagesEnd = useRef();
     useEffect(()=>{
         scrollToBottom()
     },[messages])
+    function scrollToBottom() {
+        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'end'});
+    }
 
     //current
     const [message, setMessage] = useState('')
@@ -50,12 +48,21 @@ const Chats = () => {
         setMessage('')
     }
 
-    //scroll
+    const handleKeyPress = (e) => {
 
-    var messagesEnd = useRef();
+        if(e.key === 'Enter' & e.shiftKey){
+            e.preventDefault()
+            return e.target.value += '\n';
+        }
 
-    function scrollToBottom() {
-        messagesEnd.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'end'});
+        if(e.key === 'Enter'){
+            e.preventDefault()
+            return handleSubmit()
+        }
+    }
+
+    const handleMessage = (e) => {
+        setMessage(e.target.value)
     }
 
     return (
@@ -79,10 +86,8 @@ const Chats = () => {
                         <div className={cl.CardWrapper}>
                             <div className={cl.ChatWrapper}>
                                 <div className={cl.ChatWindow} >
-                                    {messages.map((message, index)=>(
-                                        <>
-                                            <Message key={index} message={message} />
-                                        </>
+                                    {messages?.map((message, index)=>(
+                                        <Message key={index} message={message} />
                                     ))}
                                     <div ref={(el) => { messagesEnd = el }}/>
                                 </div>
@@ -93,7 +98,13 @@ const Chats = () => {
                                     <div className={cl.InputWrapper}>
                                         <AiOutlinePaperClip className={cl.Buttton}/>
                                         <div className={cl.TextWrapper}>
-                                            <textarea className={cl.MsgText} type='text' placeholder='Привет...' value={message} onChange={(e)=>setMessage(e.target.value)}/>
+                                            <textarea 
+                                                className={cl.MsgText} 
+                                                type='text' 
+                                                placeholder='Привет...' 
+                                                value={message} 
+                                                onKeyPress={handleKeyPress}
+                                                onChange={handleMessage}/>
                                         </div>
                                         <AiOutlineSend className={cl.SendButtton} onClick={handleSubmit}/>
                                     </div>

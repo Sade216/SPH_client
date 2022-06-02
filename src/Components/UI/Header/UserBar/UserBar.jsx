@@ -5,10 +5,16 @@ import cl from './UserBar.module.css'
 
 import Settings from '../../../Pages/Profile/Functions/ControlPanel/Settings/Settings'
 
-import {useAuth} from '../../../../Contexts/UserContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { UserLogout } from '../../../../Redux/reducers/asyncActions/fetchUser'
 
 const UserBar = () => {
-  const { currentUser, isAdmin, logout } = useAuth();
+
+  const dispatch = useDispatch()
+
+  const currentUser = useSelector(state => state.user.user)
+  const {role, isAuthenticated} = currentUser
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const UserMenuRef = useRef(null);
@@ -35,30 +41,30 @@ const UserBar = () => {
     <div className={cl.Wrapper} ref={UserMenuRef}>
         <div className={cl.Bar} onClick={(e)=>MenuToggler()} >
           <div className={cl.User}>
-              <div className={cl.Name}>{!currentUser ? 'Anonymous' : currentUser.nickname}</div>
-              {currentUser && <div className={cl.Role}>{currentUser.role}</div>}
+              <div className={cl.Name}>{!isAuthenticated ? 'Anonymous' : currentUser.nickname}</div>
+              {isAuthenticated && <div className={cl.Role}>{currentUser.role}</div>}
           </div>
-          {currentUser &&
+          {isAuthenticated &&
             // <img src={currentUser.avatarURL === 'none' ? './assets/questionmark.jpg' : currentUser.avatarURL} alt={currentUser.nickname}/>
             <div className={cl.ProfileImage} style={{backgroundImage: `url(${currentUser.avatarURL === 'none' ? './assets/questionmark.jpg' : currentUser.avatarURL})`}}></div>
           }
         </div>
         <div className={isMenuOpen ? cl.UserMenu + ' active' : cl.UserMenu}>
-          {isAdmin && <NavLink className={cl.Link} to='/admin'>Админ</NavLink>}
-          {currentUser && 
+          {role === 'admin' && <NavLink className={cl.Link} to='/admin'>Админ</NavLink>}
+          {isAuthenticated && 
             <NavLink className={cl.Link} to={'/@' + currentUser.nickname} onClick={()=> setIsMenuOpen(false)}>Профиль</NavLink>
           }
-          {currentUser && 
+          {isAuthenticated && 
             <button className={cl.Link}>
               <Settings mode='header'/>
             </button>
           }
           <NavLink className={cl.Link} to='/about' onClick={()=> setIsMenuOpen(false)}>О нас</NavLink>
-          {!currentUser &&
+          {!isAuthenticated &&
             <NavLink className={cl.Link} to='/login' onClick={()=> setIsMenuOpen(false)}>Логин/Регистрация</NavLink>
           }
-          {currentUser &&
-            <button className={cl.Link} onClick={logout}>Выйти</button>
+          {isAuthenticated &&
+            <button className={cl.Link} onClick={()=> dispatch(UserLogout())}>Выйти</button>
           }
         </div>
     </div>

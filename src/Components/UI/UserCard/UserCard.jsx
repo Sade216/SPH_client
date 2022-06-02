@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 import cl from './UserCard.module.css'
 import {HiOutlineDotsHorizontal} from 'react-icons/hi'
 
+
 import axios from 'axios';
-import { useAuth } from '../../../Contexts/UserContext';
+import {serverURL} from '../../../Redux/config/axios'
 
 const UserCard = (props) => {
-    const {serverURL} = useAuth()
     /*Menu*/
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const MenuBarRef = useRef(null);

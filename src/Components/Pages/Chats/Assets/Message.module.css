@@ -1,3 +1,26 @@
+@media (max-width:572px) {
+    .Time{
+        display: none;
+    }
+    .Content{
+        padding-right: 0 !important;
+    }
+    .MessageWrapper{
+        padding: 10px 0 !important;
+    }
+    .MessageWrapperRevert{
+        padding: 10px 0 ! important;
+    }
+}
+@media (max-width:990px) {
+    .Content{
+        max-width: 250px !important;
+    }
+}
+@media (max-width:1400px) {
+
+}
+
 .MessageWrapper{
     display: flex;
     flex-direction: row;
@@ -5,7 +28,7 @@
     width: 100%;
     color: var(--text-01);
     border-radius: 6px;
-    padding: 10px;
+    padding: 10px 10px;
     align-items: flex-end;
 }
 .MessageWrapper:hover{
@@ -18,7 +41,7 @@
     width: 100%;
     color: var(--text-01);
     border-radius: 6px;
-    padding: 10px;
+    padding: 10px 10px;
     align-items: flex-end;
 }
 .MessageWrapperRevert:hover{
@@ -48,20 +71,21 @@
 }
 
 .From{
-    margin-right: 10px;
     text-decoration: none;
     color:var(--text-01);
-
+    cursor: pointer;
 }
 .From:hover{
     color:var(--accent-01);
 }
 .Content{
-    padding: 0 10px 0 0;
+    padding: 0 10px 0 10px;
     cursor: default;
     overflow-wrap: anywhere;
+    max-width: 35vw;
 }
 .Time{
     font-size: 14px;
     color: var(--text-02);
+    cursor: default;
 }

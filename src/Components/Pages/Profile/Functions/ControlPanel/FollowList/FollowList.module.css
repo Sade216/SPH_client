@@ -22,3 +22,10 @@
 .Link:hover{
     color: var(--text-01);
 }
+
+.Error{
+    font-size: 18px;
+    color: var(--text-02);
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
