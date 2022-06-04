@@ -3,38 +3,28 @@ import React, {useState, useEffect} from 'react'
 import cl from './AddToFollow.module.css'
 import {BsPlusCircle} from 'react-icons/bs'
 
-import axios from 'axios'
-import { serverURL } from '../../../../../../Redux/config/axios'
-const AddToFollow = (props) => {
-    const [isFollowed, setIsFollowed] = useState('loading')
+import { useDispatch } from 'react-redux'
+import { isFollowed, setFollow, setUnFollow } from '../../../../../../Redux/reducers/asyncActions/fetchUser'
+const AddToFollow = ({id}) => {
+    const dispatch = useDispatch()
+
+    const [isFollow, setIsFollow] = useState('loading')
 
     function GetIsFollowed(){
-        axios({
-            method: 'GET',
-            withCredentials: true,
-            url: serverURL + `/user/isFollowed/${props.id}`,
-        }).then((res)=>{
-            setIsFollowed(res.data)
+        dispatch(isFollowed(id)).then((res)=>{
+            setIsFollow(res.data)
         })
     }
 
     function Follow(){
-        axios({
-            method: 'GET',
-            withCredentials: true,
-            url: serverURL + `/user/setFollow/${props.id}`,
-        }).then((res)=>{
-            setIsFollowed(res.data)
+        dispatch(setFollow(id)).then((res)=>{
+            setIsFollow(res.data)
         })
     }
 
     function UnFollow(){
-        axios({
-            method: 'GET',
-            withCredentials: true,
-            url: serverURL + `/user/setUnFollow/${props.id}`,
-        }).then((res)=>{
-            setIsFollowed(res.data)
+        dispatch(setUnFollow(id)).then((res)=>{
+            setIsFollow(res.data)
         })
     }
 
@@ -44,16 +34,16 @@ const AddToFollow = (props) => {
 
     return (
         <>
-            {isFollowed === 'loading' && 
+            {isFollow === 'loading' && 
                 <div className={cl.ActionBtn}></div>
             }
-            {isFollowed === false &&
+            {isFollow === false &&
                 <button className={cl.ActionBtn} onClick={()=> Follow()}>
                     <BsPlusCircle/>
                     Отслеживать
                 </button>
             }
-            {isFollowed === true &&
+            {isFollow === true &&
                 <button className={cl.ActionBtn} onClick={()=> UnFollow()}>
                     <BsPlusCircle/>
                     Перестать отслеживать

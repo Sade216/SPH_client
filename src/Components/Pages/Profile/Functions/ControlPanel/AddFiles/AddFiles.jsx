@@ -11,6 +11,7 @@ import Track from '../../../../../UI/Player/Track/Track'
 import {useSelector, useDispatch} from 'react-redux'
 
 import { addNewTrack } from '../../../../../../Redux/reducers/asyncActions/fetchMusic'
+import { Spinner } from 'react-bootstrap'
 
 const AddFiles = () => {
   const currentUser = useSelector(state => state.user.user)
@@ -81,13 +82,18 @@ const AddFiles = () => {
     })
   }
 
+  const handleClose = () => {
+    if(isLoading === false){
+      setShowModal(false)
+    }
+  }
   return (
     <>
-        <button className={cl.ActionBtn} onClick={()=> setShowModal(true)}>
+        <button className={cl.ActionBtn} onClick={()=>setShowModal(true)}>
             <IoMusicalNotesOutline className={cl.ActionBtnSvg}/>
             Добавить
         </button>
-        <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <Modal show={showModal} onClose={handleClose} outsideClick={isLoading}>
             <div className={modal.ModalContent}>
                 <h2>Добавить трек</h2>
                 <h4>Предпросмотр:</h4>
@@ -116,7 +122,11 @@ const AddFiles = () => {
                   <input type='text' value={tags} onChange={(e)=>setTags(e.target.value)}/>
                 </div>
                 <div className={cl.Row}>
-                  <input disabled={isLoading} type='submit' onClick={()=> SubmitTrack()}/>
+                  {isLoading === true ? 
+                    <Spinner animation="border" role="status"/>
+                  :
+                    <input disabled={isLoading} type='submit' onClick={()=> SubmitTrack()}/>
+                  }
                 </div>
             </div>
         </Modal>

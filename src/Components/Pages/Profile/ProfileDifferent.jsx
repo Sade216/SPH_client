@@ -107,7 +107,7 @@ const Profile = () => {
                 {/* Передать nickname через props
                 Добавить followList функцию */}
                 <Collection trackList={pageUser.trackList}/>
-                <FollowList FollowList={pageUser.you_follow}/>
+                <FollowList userFollowers={pageUser.youFollow}/>
               </Col>
               <Col xl={8} lg={7} md={12}>
                 <About about={pageUser.about} pref_genres={pageUser.pref_genres}/>

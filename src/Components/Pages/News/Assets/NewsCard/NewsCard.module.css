@@ -1,6 +1,18 @@
 .CardWrapper{
     padding: 20px;
     margin-bottom: 24px;
+    animation: reveal .3s ease forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@keyframes reveal {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 .Header{
     display: flex;
@@ -64,8 +76,8 @@
     margin-right: 10px;
     font-size: 24px;
     color: var(--text-02);
-    cursor: pointer;
     display: flex;
+    cursor: pointer;
 }
 .Element svg{
     position: relative;
@@ -81,7 +93,7 @@
 .Element svg[disabled]{
     cursor: default;
 }
-.Element svg[disabled]:hover{
+.Element:hover svg[disabled]{
     color: var(--text-02);
 }
 

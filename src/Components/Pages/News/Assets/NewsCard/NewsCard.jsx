@@ -11,7 +11,8 @@ import cl from './NewsCard.module.css'
 import {useSelector} from 'react-redux'
 
 const NewsCard = ({news, index}) => {
-    const {currentUser, role} = useSelector(state => state.user.user)
+    const currentUser = useSelector(state => state.user.user)
+    const {isAuthenticated, role} = currentUser
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -52,7 +53,7 @@ const NewsCard = ({news, index}) => {
                 <div className={cl.Footer}>
                     <div className={cl.Row}>
                         <div className={cl.Element}>
-                        <BiLike disabled={!currentUser} active={news.likes.indexOf(currentUser?.nickname)}/>
+                        <BiLike disabled={!isAuthenticated} active={news.likes.indexOf(currentUser?.nickname)}/>
                         </div>
                         <div className={cl.LikesCounter}>{news.likes.length <= 0 ? '' : news.likes.length}</div>
                         <div className={cl.Element}>

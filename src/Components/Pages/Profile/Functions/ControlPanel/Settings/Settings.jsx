@@ -5,7 +5,7 @@ import cl from './Settings.module.css'
 import modal from '../../../../../UI/Modal/Modal.module.css'
 import {IoSettingsOutline} from 'react-icons/io5'
 
-const Settings = (props) => {
+const Settings = ({mode}) => {
     
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -38,13 +38,12 @@ const Settings = (props) => {
 
     return (
         <>
-            {props.mode === 'profile' &&
+            {mode === 'profile' ?
                 <button className={cl.ActionBtn} onClick={()=> setShowModal(true)}>
                     <IoSettingsOutline className={cl.ActionBtnSvg}/>
                     Настройки
                 </button>
-            }
-            {props.mode === 'header' &&
+                : mode === 'header' &&
                 <button className={cl.ActionBtnHeader} onClick={()=> setShowModal(true)}>
                     Настройки
                 </button>

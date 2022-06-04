@@ -129,6 +129,7 @@
     flex-direction: row;
     list-style: none;
     color: var(--text-01);
+    margin: 0 0 10px 0;
     padding: 0;
 }
 .Tabs li{
@@ -143,16 +144,20 @@
     text-align: left;
     cursor: pointer;
 }
-.Tabs li:hover::before{
+.Tabs li::before{
     position: absolute;
     content: '';
+    transition: all .1s ease-in-out;
+}
+.Tabs li:hover::before{
     bottom: 0;
     height: 2px;
     width: 100%;
     background-color: var(--text-02);
 }
 .Tabs li[aria-selected=true]{
-    color: var(--accent-01)
+    color: var(--accent-01);
+    transition: all .1s ease-in-out;
 }
 .Tabs li[aria-selected=true]::before{
     position: absolute;

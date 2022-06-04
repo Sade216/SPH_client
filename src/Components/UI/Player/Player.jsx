@@ -15,7 +15,16 @@ const Player = () => {
     const {currentTrack} = MusicState
 
     const [togglePlayer, setTogglePlayer] = useState(false)
+    const [volume, setVolume] = useState(1)
     
+    useEffect(()=>{
+        setVolume(localStorage.getItem('PlayerVolume'))
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem('PlayerVolume', volume)
+    },[volume])
+
     useEffect(()=>{
         if(currentTrack?.trackURL){
             setTogglePlayer(true)
@@ -24,20 +33,20 @@ const Player = () => {
 
     const playerRef = useRef(null);
     const PlayerInstance = useRef(null)
-    useOutsideAlerter(playerRef);
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    setTogglePlayer(false)
-                }
-            }
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
+    // useOutsideAlerter(playerRef);
+    // function useOutsideAlerter(ref) {
+    //     useEffect(() => {
+    //         function handleClickOutside(event) {
+    //             if (ref.current && !ref.current.contains(event.target)) {
+    //                 setTogglePlayer(false)
+    //             }
+    //         }
+    //         document.addEventListener("mousedown", handleClickOutside);
+    //         return () => {
+    //             document.removeEventListener("mousedown", handleClickOutside);
+    //         };
+    //     }, [ref]);
+    // }
     function TogglePlayer(){
         setTogglePlayer(!togglePlayer)
     }
@@ -61,7 +70,8 @@ const Player = () => {
             {currentTrack.trackURL &&
             <AudioPlayer
                 ref={PlayerInstance}
-                volume={0.5}
+                volume={volume}
+                onVolumeChange={(e)=>setVolume(Math.round(e.target.volume * 100) / 100)}
                 layout='horizontal-reverse'
                 autoPlay
                 src={currentTrack.trackURL}

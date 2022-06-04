@@ -17,8 +17,11 @@ export const addNewTrack = (formDataFiles) => {
                 'content-type': 'multipart/form-data',
             },
         }).then((res)=>{
-            ToastSuccess(res.data)
+            //Обработать
+            ToastSuccess(`Трек - ${formDataFiles.get('title')} был успешно добавлен`)
             dispatch(getCollection())
+        }).catch((err)=>{
+            console.log(err)
         })
         return response
     }
@@ -42,8 +45,11 @@ export const deleteTrack = (track) => {
             url: serverURL + `/music/deleteTrack`,
             data: track,
         }).then((res)=>{
+            //Обработать
             ToastSuccess(res.data)
             dispatch(getCollection())
+        }).catch((err)=>{
+            console.log(err)
         })
 
         return response

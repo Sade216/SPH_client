@@ -38,7 +38,7 @@ const News = () => {
                     </div>
                   </div>
                 </div>
-                <div className={card.Wrapper}>
+                {/* <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.Header}>
                       <div className={cl.Title}>Новые релизы:</div>
@@ -47,7 +47,7 @@ const News = () => {
                       <Spinner animation="border" /> 
                     </div>
                   </div>
-                </div>
+                </div> */}
             </Col>
         </Row>
       </Container>

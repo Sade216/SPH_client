@@ -4,7 +4,7 @@ import cl from './Modal.module.css'
 
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
-const Modal = ({ modalStyle, children, show, onClose, backdropStyle }) => {
+const Modal = ({ modalStyle, children, show, onClose, backdropStyle, outsideClick}) => {
     const modalRef = useRef(null);
     const ModalClickOutside = useRef(null)
     useOutsideAlerter(ModalClickOutside);
@@ -13,28 +13,25 @@ const Modal = ({ modalStyle, children, show, onClose, backdropStyle }) => {
         useEffect(() => {
             function handleClickOutside(event) {
                 if (ref.current && !ref.current.contains(event.target)) {
-                    onClose()
+                    if(!outsideClick){
+                        onClose()
+                    }
                 }
             }
             document.addEventListener("mousedown", handleClickOutside);
             return () => {
                 document.removeEventListener("mousedown", handleClickOutside);
             };
-        }, [ref]);
+        }, [ref, outsideClick]);
     }
-    useEffect(
-        () => {
-            if (show) {
-                modalRef.current.classList.add(cl.Visible);
-            }
-            else {
-                modalRef.current.classList.remove(cl.Visible);
-            }
-        },
-        [
-            show
-        ]
-    );
+    useEffect(() => {
+        if (show) {
+            modalRef.current.classList.add(cl.Visible);
+        }
+        else {
+            modalRef.current.classList.remove(cl.Visible);
+        }
+    },[show]);
     return (
         <React.Fragment>
             <div ref={modalRef} style={backdropStyle} className={cl.ModalWrap}>
@@ -42,7 +39,8 @@ const Modal = ({ modalStyle, children, show, onClose, backdropStyle }) => {
                 <button
                     onClick={onClose}
                     className={cl.CloseBtn}
-                ><AiOutlineCloseCircle/></button>
+                ><AiOutlineCloseCircle/>
+                </button>
                     {children}
                 </div>
             </div>

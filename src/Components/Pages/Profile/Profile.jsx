@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import cl from './Profile.module.css'
 import card from '../../UI/Card.module.css'
 import {Container, Row, Col} from 'react-bootstrap'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { Route, Routes } from 'react-router-dom'
 
 import AvatarUpload from './Functions/ControlPanel/AvatarUpload/AvatarUpload'
 import AddFiles from './Functions/ControlPanel/AddFiles/AddFiles'
@@ -18,9 +19,15 @@ import {BsPencil} from 'react-icons/bs'
 
 import { useSelector } from 'react-redux'
 
-const Profile = () => {
+const Profile = ({preSelectedTab = 0}) => {
   const currentUser = useSelector(state => state.user.user)
   const {role, isAuthenticated} = currentUser
+
+  const [tabIndex, setTabIndex] = useState(0)
+
+  useEffect(()=>{
+    setTabIndex(preSelectedTab)
+  },[])
 
   document.title = `Профиль - @${currentUser.nickname}`
 
@@ -88,23 +95,23 @@ const Profile = () => {
               </Col>
               <Col xl={8} lg={7} md={12}>
                 <About about={currentUser.about} pref_genres={currentUser.pref_genres}/>
-                <Tabs>
+                <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                   <TabList className={cl.Tabs}>
                     <Tab>Посты</Tab>
                     <Tab>Избранное</Tab>
                     <Tab>Подборки</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
-                      <CreatePost/>
-                      <h3>Пользователь ничего не публикует</h3>
+                    <CreatePost/>
+                    <h3>Пользователь ничего не публикует</h3>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                      <h3>Избранное</h3>
+                    <h3>Избранное</h3>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                      <h3>Подборки</h3>
+                    <h3>Подборки</h3>
                   </TabPanel>
-                </Tabs>
+               </Tabs>
               </Col>
             </Row>
           </Container>

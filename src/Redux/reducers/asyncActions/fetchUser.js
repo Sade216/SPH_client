@@ -6,7 +6,7 @@ import { setAuthToken, serverURL } from '../../config/axios';
 import { userSlice } from "../../reducers/UserReducer";
 
 export const fetchUserData = ()=>{
-    return (dispatch)=>{
+    return (dispatch) => {
         setAuthToken(null)
         axios({
             method: 'GET',
@@ -24,7 +24,7 @@ export const fetchUserData = ()=>{
 }
 
 export const UserRegistration = (nickname, email, password) => {
-    return (dispatch)=>{
+    return (dispatch) => {
         axios({
             method: 'POST',
             data:{
@@ -41,7 +41,7 @@ export const UserRegistration = (nickname, email, password) => {
 }
 
 export const UserLogin = (nickname, password)=>{
-    return (dispatch)=>{
+    return (dispatch) => {
         axios({
             method: 'POST',
             data:{
@@ -62,18 +62,49 @@ export const UserLogin = (nickname, password)=>{
 }
 
 export const UserLogout = () =>{
-    return (dispatch)=>{
+    return (dispatch) => {
         let answer = window.confirm("Вы уверены?");
         if (answer) {
-        axios({
-            method: 'POST',
-            withCredentials: true,
-            url: serverURL + '/user/logout',
-        }).then((res)=>{
-            localStorage.setItem('jwtToken', '')
-            dispatch(userSlice.actions.userLogout())
-            ToastSuccess('Вы успешно вышли')
-        })
+            axios({
+                method: 'POST',
+                withCredentials: true,
+                url: serverURL + '/user/logout',
+            }).then((res)=>{
+                localStorage.setItem('jwtToken', '')
+                dispatch(userSlice.actions.userLogout())
+                ToastSuccess('Вы успешно вышли')
+            })
         }
+    }
+}
+
+export const isFollowed = (id) => {
+    return async (dispatch) => {
+        const response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/user/isFollowed/${id}`,
+        })
+        return response
+    }
+}
+export const setFollow = (id) => {
+    return async (dispatch) => {
+        const response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/user/setFollow/${id}`,
+        })
+        return response
+    }
+}
+export const setUnFollow = (id) => {
+    return async (dispatch) => {
+        const response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/user/setUnFollow/${id}`,
+        })
+        return response
     }
 }

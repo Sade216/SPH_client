@@ -15,7 +15,7 @@ const FollowList = ({userFollowers}) => {
                     <div className={cl.Title}>Ваши подписки:</div>
                     <button className={cl.Link}>Полный список</button>
                 </div>
-                {userFollowers ? userFollowers.map((id, index)=>(
+                {userFollowers ? userFollowers.slice(0,3).map((id, index)=>(
                     <UserCard id={id} key={index}/>
                 ))
                 : 

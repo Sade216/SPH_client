@@ -13,10 +13,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
 import { deleteTrack } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
-const Track = (props) => {
+const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) => {
 
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user.user)
+  const {isAuthenticated} = currentUser
   const currentTrack = useSelector(state => state.music.currentTrack)
 
   /*Menu*/
@@ -66,14 +67,20 @@ const Track = (props) => {
   /* Конец превью картинки*/
 
   useEffect(()=>{
-    getTrackData()
+      
+    if(trackProp){
+      setTrack(trackProp)
+    }
+    else if(id){
+      getTrackData(id)
+    }
   },[])
 
   function getTrackData(){
-    if(props.id){
+    if(id){
       axios({
         method: 'GET',
-        url: serverURL + `/music/getTrackData/${props.id}`
+        url: serverURL + `/music/getTrackData/${id}`
       }).then((res)=>{
         setTrack(res.data)
       })
@@ -92,28 +99,31 @@ const Track = (props) => {
   }
   const PlayButton = () => {
     dispatch(musicSlice.actions.musicChangeCurrentTrack(track))
+    dispatch(musicSlice.actions.musicChangeCurrentTrackList(currentPlayList))
   }
 
   return ( track &&
     <div className={cl.TrackWrapper}>
       <div className={cl.ImageWrapper}>
-        <div className={cl.Image} style={{backgroundImage: `url(${track.imageURL ? track.imageURL : './assets/questionmark.jpg'})`}}></div>
-        {props.mode !== 'preview' &&
-          <div className={cl.PlayButton} onClick={PlayButton}>
-            {currentTrack?.title === track.title ?
-              <BsPause className={cl.BsPause}/>
-              :
-              <BsPlay className={cl.BsPlay}/>
-            }
-          </div>
-        }
+        <div className={cl.Image} style={{backgroundImage: `url(${track.imageURL ? track.imageURL : './assets/questionmark.jpg'})`}}>
+          {mode !== 'preview' &&
+            <div className={cl.PlayButton} onClick={PlayButton}>
+              {currentTrack?.title === track.title ?
+                <BsPause className={cl.BsPause}/>
+                :
+                <BsPlay className={cl.BsPlay}/>
+              }
+            </div>
+          }
+        </div>
+        
       </div>
       <div className={cl.Main}>
         <div className={cl.Credentials}>
           <div className={cl.Title}>{track.title ? track.title : "Без названия?"}</div>
           <NavLink className={cl.Author} to={`/@${track.author}`}>{track.author ? track.author : "Без автора???????"}</NavLink>
         </div>
-          {currentUser &&
+          {isAuthenticated &&
             <div className={cl.Options} ref={MenuBarRef}>
               <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
               <div className={cl.MenuWrapper}>
@@ -122,10 +132,10 @@ const Track = (props) => {
                     <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
                   }
                   {currentUser.nickname === track.author&&
-                    <div>
+                    <>
                       <button disabled className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
                       <button className={cl.Link} onClick={()=> DeleteTrack()}>Удалить</button>
-                    </div>
+                    </>
                   }
                 </div>
               </div>

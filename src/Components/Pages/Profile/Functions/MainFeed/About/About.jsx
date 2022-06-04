@@ -16,8 +16,8 @@ const About = ({about = null, pref_genres = null}) => {
           </div>
           <div className={cl.SecondaryText}>
             {about === undefined | about === '' 
-            ? ' Мы ничего не знаем об этом пользователе(' 
-            : ' ' + about}
+            ? 'Нет информации'
+            : about}
           </div>
         </div>
         {pref_genres &&
@@ -25,10 +25,13 @@ const About = ({about = null, pref_genres = null}) => {
             <div className={cl.PrimaryText}>  
               Предпочитаемые жанры: 
             </div>
-            <div className={cl.Row}>
-              {/* {pref_genres.map((tags, index)=>(
-                <NavLink className={cl.SecondaryText} to={'/search?tag=' + tags} key={index}>{tags},</NavLink>
-              ))} */}
+            <div className={cl.SecondaryText}>
+              {pref_genres.length > 0 ? 
+                pref_genres.map((tags, index)=>(
+                  <NavLink className={cl.SecondaryText} to={'/search?tag=' + tags} key={index}>{tags},</NavLink>
+                ))
+              : 'Пользователь не отметил любимые жанры'
+              }
             </div>
           </div>
         }

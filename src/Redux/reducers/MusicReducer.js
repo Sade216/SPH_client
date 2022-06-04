@@ -18,6 +18,9 @@ export const musicSlice = createSlice({
         musicChangeCurrentTrack(state, action){
             state.currentTrack = action.payload
         },
+        musicChangeCurrentTrackList(state, action){
+            state.currentTracklist = action.payload
+        },
     },
     extraReducers: {
     }

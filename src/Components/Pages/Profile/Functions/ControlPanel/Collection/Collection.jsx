@@ -4,20 +4,19 @@ import card from '../../../../../UI/Card.module.css'
 import cl from './Collection.module.css'
 
 import Track from '../../../../../UI/Player/Track/Track'
+import { NavLink } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
-
-const Collection = ({trackList}) => {
+const Collection = ({owner = 'admin',trackList, title = null}) => {
 
     return (
         <div className={card.Wrapper}>
             <div className={cl.CardWrapper}>
                 <div className={cl.Row}>
-                    <div className={cl.Title}>Коллекция:</div>
-                    <button className={cl.Link}>Полный список</button>
+                    <div className={cl.Title}>{title ? title : 'Коллекция'}:</div>
+                    <NavLink className={cl.Link} to={`/@${owner}`}>Полный список</NavLink>
                 </div>
                 {trackList ? 
-                    trackList.map((id, index)=>(
+                    trackList.slice(0,3).map((id, index)=>(
                         <Track id={id} key={index} mode='default'/>
                     ))
                 :

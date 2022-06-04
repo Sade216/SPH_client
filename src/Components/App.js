@@ -47,7 +47,7 @@ const App = () => {
               <Route exact path="/msg" element={<Chats />} />
             }
             {isAuthenticated &&
-              <Route exact path={`/@${currentUser.nickname}`} element={<Profile />} />
+                <Route exact path={`/@${currentUser.nickname}`} element={<Profile/>} />
             }
             <Route exact path="/@:id" element={<ProfileDifferent />} />
 
