@@ -4,7 +4,6 @@ import cl from './Profile.module.css'
 import card from '../../UI/Card.module.css'
 import {Container, Row, Col} from 'react-bootstrap'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import { Route, Routes } from 'react-router-dom'
 
 import AvatarUpload from './Functions/ControlPanel/AvatarUpload/AvatarUpload'
 import AddFiles from './Functions/ControlPanel/AddFiles/AddFiles'
@@ -15,19 +14,19 @@ import CreatePost from './Functions/MainFeed/CreatePost/CreatePost'
 import FollowList from './Functions/ControlPanel/FollowList/FollowList'
 import Collection from './Functions/ControlPanel/Collection/Collection'
 
-import {BsPencil} from 'react-icons/bs'
+// import {BsPencil} from 'react-icons/bs'
 
 import { useSelector } from 'react-redux'
 
 const Profile = ({preSelectedTab = 0}) => {
   const currentUser = useSelector(state => state.user.user)
-  const {role, isAuthenticated} = currentUser
+  const {isAuthenticated} = currentUser
 
   const [tabIndex, setTabIndex] = useState(0)
 
   useEffect(()=>{
     setTabIndex(preSelectedTab)
-  },[])
+  },[preSelectedTab])
 
   document.title = `Профиль - @${currentUser.nickname}`
 
@@ -88,7 +87,7 @@ const Profile = ({preSelectedTab = 0}) => {
                     <AddFiles/>
                   </div>
 
-                  <Collection trackList={currentUser.trackList}/>
+                  <Collection owner={currentUser.nickname} trackList={currentUser.trackList}/>
                   <FollowList userFollowers={currentUser.youFollow}/>
 
                 </div>
@@ -98,18 +97,18 @@ const Profile = ({preSelectedTab = 0}) => {
                 <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                   <TabList className={cl.Tabs}>
                     <Tab>Посты</Tab>
+                    <Tab>Библиотека</Tab>
                     <Tab>Избранное</Tab>
-                    <Tab>Подборки</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
                     <CreatePost/>
                     <h3>Пользователь ничего не публикует</h3>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                    <h3>Избранное</h3>
+                    <h3>Все треки, альбомы, коллекции пользователя</h3>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                    <h3>Подборки</h3>
+                    <h3>Музыка всех пользователей добавляется сюда</h3>
                   </TabPanel>
                </Tabs>
               </Col>

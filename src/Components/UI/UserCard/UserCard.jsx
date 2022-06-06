@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import cl from './UserCard.module.css'
 import {HiOutlineDotsHorizontal} from 'react-icons/hi'
@@ -55,7 +55,7 @@ const UserCard = (props) => {
             </div>
             <div className={cl.Main}>
                 <div className={cl.Credentials}>
-                    <NavLink className={cl.Nickname} to={`/@${user.nickname}`}>{user.nickname}</NavLink>
+                    <Link className={cl.Nickname} to={`/@${user.nickname}`}>{user.nickname}</Link>
                 </div>
                 <div className={cl.Options}>
                     <HiOutlineDotsHorizontal className={isMenuOpen ? 'active' : ''} onClick={()=> MenuToggler()}/>

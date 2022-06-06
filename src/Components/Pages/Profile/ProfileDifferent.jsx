@@ -10,19 +10,20 @@ import About from './Functions/MainFeed/About/About'
 import AddToFollow from './Functions/ControlPanel/AddToFollow/AddToFollow'
 import FollowList from './Functions/ControlPanel/FollowList/FollowList'
 
-// import {IoSettingsOutline} from 'react-icons/io5'
+import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { serverURL } from '../../../Redux/config/axios'
 
 import { useSelector } from 'react-redux'
 
-const Profile = () => {
-
-  const [pageUser, setPageUser] = useState(null)
-  const User = window.location.pathname.slice(2).toLocaleLowerCase();
-
+const ProfileDifferent = () => {
+  let location = useLocation();
+  let User = location.pathname.slice(2).toLocaleLowerCase();
+  console.log(User)
   const currentUser = useSelector(state => state.user.user)
   const {role, isAuthenticated} = currentUser
+
+  const [pageUser, setPageUser] = useState(null)
 
   function getUserPage(){
     axios({
@@ -37,30 +38,23 @@ const Profile = () => {
   }
 
   useEffect(()=>{
+    setPageUser(null)
     getUserPage()
-  },[])
+  },[location])
 
   document.title = `Профиль - @${pageUser?.nickname}`
 
   function AlternateBackgroundImage(){
     let string = ' ';
     for(var i = 0; i < 50; i++) {
-      string += pageUser.nickname + ' ' ;
+      string += pageUser?.nickname + ' ' ;
     }
     return string.toString();
   }
 
-  const imageRef = useRef();
-
-  function ChangeImage(){
-    imageRef.current.click();
-  }
-
-
-  return (
-    pageUser !== null && 
+  return (pageUser ?
       <>
-        <div className={cl.ProfileBackImage} style={
+        <div className={cl.ProfileBackImage} style={pageUser.nickname &&
           {background: `linear-gradient(rgba(10,10,20,0.5) -150% , var(--background-01) 80%), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px'><text x='-30' y='27%' fill='white' font-size='3rem' font-weight='600' opacity='0.8'>${AlternateBackgroundImage()}</text><text x='-15' y='60%' fill='white' font-size='4rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text><text x='-5' y='93%' fill='white' font-size='3rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text></svg>")`}
         }></div>
         <div className={cl.Wrapper}>
@@ -70,7 +64,11 @@ const Profile = () => {
                 <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.ProfileAvatar}>
-                      <div className={cl.ProfileImage} style={{backgroundImage: `url(${pageUser.avatarURL === 'none' ? './assets/questionmark.jpg' : pageUser.avatarURL})`}}></div>
+                      <div className={cl.ProfileImage} style={
+                        {backgroundImage: `url(${pageUser.avatarURL === 'none' 
+                          ? './assets/questionmark.jpg' 
+                          : pageUser.avatarURL})`}}>
+                      </div>
                     </div>
                     <div className={cl.ProfileData}>
                         <div className={cl.PrimaryText}>{pageUser.nickname}</div>
@@ -104,8 +102,6 @@ const Profile = () => {
                       <AddToFollow id={pageUser.nickname}/>
                   </div>
                 }
-                {/* Передать nickname через props
-                Добавить followList функцию */}
                 <Collection trackList={pageUser.trackList}/>
                 <FollowList userFollowers={pageUser.youFollow}/>
               </Col>
@@ -132,7 +128,11 @@ const Profile = () => {
           </Container>
         </div>
       </>
+      :
+      <Container>
+        <div className={cl.PrimaryText}>Страница не найдена</div>
+      </Container>
   )
 }
 
-export default Profile
+export default ProfileDifferent

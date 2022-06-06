@@ -22,7 +22,6 @@ export const fetchUserData = ()=>{
         })
     }
 }
-
 export const UserRegistration = (nickname, email, password) => {
     return (dispatch) => {
         axios({
@@ -39,7 +38,6 @@ export const UserRegistration = (nickname, email, password) => {
           })
     }
 }
-
 export const UserLogin = (nickname, password)=>{
     return (dispatch) => {
         axios({
@@ -60,7 +58,6 @@ export const UserLogin = (nickname, password)=>{
           })
     }
 }
-
 export const UserLogout = () =>{
     return (dispatch) => {
         let answer = window.confirm("Вы уверены?");
@@ -77,10 +74,9 @@ export const UserLogout = () =>{
         }
     }
 }
-
 export const isFollowed = (id) => {
     return async (dispatch) => {
-        const response = await axios({
+        let response = await axios({
             method: 'GET',
             withCredentials: true,
             url: serverURL + `/user/isFollowed/${id}`,
@@ -90,7 +86,7 @@ export const isFollowed = (id) => {
 }
 export const setFollow = (id) => {
     return async (dispatch) => {
-        const response = await axios({
+        let response = await axios({
             method: 'GET',
             withCredentials: true,
             url: serverURL + `/user/setFollow/${id}`,
@@ -100,7 +96,7 @@ export const setFollow = (id) => {
 }
 export const setUnFollow = (id) => {
     return async (dispatch) => {
-        const response = await axios({
+        let response = await axios({
             method: 'GET',
             withCredentials: true,
             url: serverURL + `/user/setUnFollow/${id}`,

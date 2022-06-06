@@ -15,7 +15,7 @@ import {
   useQuery,
   QueryClient,
   QueryClientProvider,
-  ReactQueryDevtools,
+//   ReactQueryDevtools,
 } from 'react-query'
 
 const QueryClientGetNews = new QueryClient();
@@ -45,7 +45,7 @@ const NewsFetchQuery = () => {
     }, [data, page])
 
     return (
-            <div>
+        <>
             {isLoading ? (
                 <div className={cl.Spinner}> <Spinner animation="border" role="status"/></div>
             ) : isError ? (
@@ -76,7 +76,7 @@ const NewsFetchQuery = () => {
                 </div>
                 </>
             )}
-            </div>
+        </>
     )
 }
 

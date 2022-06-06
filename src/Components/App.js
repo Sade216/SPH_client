@@ -27,13 +27,13 @@ const App = () => {
   const dispatch = useDispatch()
 
   const currentUser = useSelector(state => state.user.user)
+  const isAuthenticated = useSelector(state => state.user.user.isAuthenticated)
   const {isLoading, error} = useSelector(state => state.user)
-  const {role, isAuthenticated} = currentUser
+  const {role} = currentUser
 
   useEffect(()=>{
     dispatch(fetchUserData())
   },[])
-
   return (
     <> 
       <ToastContainer newestOnTop pauseOnFocusLoss draggable pauseOnHover />
@@ -43,11 +43,11 @@ const App = () => {
             <Route exact path="/" element={<News />} />
             <Route exact path="/lib" element={<Lib />} />
             <Route exact path="/about" element={<About />} />
-            {isAuthenticated && 
+            {isAuthenticated &&
               <Route exact path="/msg" element={<Chats />} />
             }
             {isAuthenticated &&
-                <Route exact path={`/@${currentUser.nickname}`} element={<Profile/>} />
+              <Route exact path={`/@${currentUser.nickname}`} element={<Profile />} />
             }
             <Route exact path="/@:id" element={<ProfileDifferent />} />
 

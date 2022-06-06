@@ -6,12 +6,9 @@ import {HiOutlineDotsHorizontal} from 'react-icons/hi'
 
 import { NavLink } from 'react-router-dom'
 
-import axios from 'axios'
-import {serverURL} from '../../../../Redux/config/axios'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
-import { deleteTrack } from '../../../../Redux/reducers/asyncActions/fetchMusic'
+import { deleteTrack, getTrackData, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
 const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) => {
 
@@ -66,29 +63,26 @@ const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) =
   // },[image])
   /* Конец превью картинки*/
 
+
   useEffect(()=>{
-      
     if(trackProp){
       setTrack(trackProp)
     }
     else if(id){
-      getTrackData(id)
+      GetTrackData(id)
     }
   },[])
 
-  function getTrackData(){
+  function GetTrackData(){
     if(id){
-      axios({
-        method: 'GET',
-        url: serverURL + `/music/getTrackData/${id}`
-      }).then((res)=>{
+      dispatch(getTrackData(id)).then((res)=>{
         setTrack(res.data)
       })
     }
   }
 
   function ChangeTrackData(){
-
+    dispatch(updateTrackData(track))
   }
   function AddToFeature(){
 

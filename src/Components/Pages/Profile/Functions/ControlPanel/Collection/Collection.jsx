@@ -6,16 +6,15 @@ import cl from './Collection.module.css'
 import Track from '../../../../../UI/Player/Track/Track'
 import { NavLink } from 'react-router-dom'
 
-const Collection = ({owner = 'admin',trackList, title = null}) => {
-
+const Collection = ({trackList}) => {
     return (
         <div className={card.Wrapper}>
             <div className={cl.CardWrapper}>
                 <div className={cl.Row}>
-                    <div className={cl.Title}>{title ? title : 'Коллекция'}:</div>
-                    <NavLink className={cl.Link} to={`/@${owner}`}>Полный список</NavLink>
+                    <div className={cl.Title}>Коллекция:</div>
+                    <div className={cl.Link}>Полный список</div>
                 </div>
-                {trackList ? 
+                {trackList ?
                     trackList.slice(0,3).map((id, index)=>(
                         <Track id={id} key={index} mode='default'/>
                     ))

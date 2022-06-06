@@ -1,12 +1,6 @@
 .Hr{
     margin: 20px 0 10px 0;
 }
-.Spinner{
-    color: var(--text-01);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 .Wrapper{
     margin: 24px 0;
 }

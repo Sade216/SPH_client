@@ -7,7 +7,7 @@ import { userSlice } from "../../reducers/UserReducer";
 
 export const addNewTrack = (formDataFiles) => {
     return async (dispatch)=>{
-        const response = await axios({
+        let response = await axios({
             method: "post",
             url: serverURL + "/music/addTrack",
             data: formDataFiles,
@@ -26,20 +26,19 @@ export const addNewTrack = (formDataFiles) => {
         return response
     }
 }
-
-export const getCollection = () => {
-    return async (dispatch)=>{
-        const {status, data} = await axios({
+export const getTrackData = (id) => {
+    return async (dispatch) => {
+        let response = await axios({
             method: 'GET',
-            withCredentials: true,
-            url: serverURL + `/music/getCollection`,
-        })
-        dispatch(userSlice.actions.getUserTrackList(data))
+            url: serverURL + `/music/getTrackData/${id}`
+          })
+
+        return response
     }
-} 
+}
 export const deleteTrack = (track) => {
     return async (dispatch)=>{
-        const response = await axios({
+        let response = await axios({
             method: 'POST',
             withCredentials: true,
             url: serverURL + `/music/deleteTrack`,
@@ -55,3 +54,24 @@ export const deleteTrack = (track) => {
         return response
     }
 }
+export const updateTrackData = (id) => {
+    return async (dispatch) => {
+        let response
+
+        // on success
+        // ToastSuccess(res.data)
+        // dispatch(getCollection())
+        return response
+    }
+}
+
+export const getCollection = () => {
+    return async (dispatch)=>{
+        let {status, data} = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/music/getCollection`,
+        })
+        dispatch(userSlice.actions.getUserTrackList(data))
+    }
+} 

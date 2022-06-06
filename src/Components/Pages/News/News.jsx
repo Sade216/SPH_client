@@ -1,9 +1,9 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React from 'react'
 import {NavLink} from 'react-router-dom'
 
 import NewsFetch from './Assets/NewsFetch/NewsFetch'
 
-import {Container, Row, Col, Spinner} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import card from '../../UI/Card.module.css'
 import cl from './News.module.css'
 import { useSelector } from 'react-redux'
@@ -12,7 +12,8 @@ import { useSelector } from 'react-redux'
 const News = () => {
   document.title = 'Новости'
 
-  const {currentUser} = useSelector(state => state.user.user);
+  const currentUser = useSelector(state => state.user.user);
+  const {isAuthenticated} = currentUser
   
 
   return (
@@ -30,7 +31,7 @@ const News = () => {
                     </div>
                     <div>
                       <NavLink className={cl.Link} to='/lib'>Библиотека</NavLink>
-                      {!currentUser ?
+                      {!isAuthenticated ?
                         <NavLink className={cl.Link} to='/login'>Логин/Реистрация</NavLink>
                         :
                         <NavLink className={cl.Link} to={`@${currentUser.nickname}`}>Профиль</NavLink>

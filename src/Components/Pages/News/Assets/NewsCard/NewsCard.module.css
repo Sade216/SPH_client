@@ -1,7 +1,7 @@
 .CardWrapper{
     padding: 20px;
     margin-bottom: 24px;
-    animation: reveal .3s ease forwards;
+    /* animation: reveal .3s ease forwards; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
