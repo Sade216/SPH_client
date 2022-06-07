@@ -46,7 +46,7 @@ const Lib = () => {
         }, [data, page, pageCount])
 
         return(
-            !data ? <div className={cl.Spinner}> <Spinner animation="border" role="status"/></div>
+            !data ? <div className={cl.Spinner}><Spinner animation="border" role="status"/></div>
             : 
             <>
                 {data.map((track, index)=>(

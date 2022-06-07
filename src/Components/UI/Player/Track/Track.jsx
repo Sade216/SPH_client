@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
 import { deleteTrack, getTrackData, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
-const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) => {
+const Track = ({id, trackProp = null, currentPlayList = null}) => {
 
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user.user)
@@ -40,29 +40,6 @@ const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) =
   /*Menu*/
 
   const [track, setTrack]= useState(null)
-
-  // const image = props.track?.image
-  // const author = props.track?.author
-  // const title = props.track?.title
-
-  /* Превью картинки*/
-  // const [imageURL, setImageURL] = useState(null);
-  // const readURL = image => {
-  //   return new Promise((res, rej) => {
-  //       const reader = new FileReader();
-  //       reader.onloadend = e => res(e.target.result);
-  //       reader.onerror = e => rej(e);
-  //       reader.readAsDataURL(image);
-  //   });
-  // };
-  // const preview = async image => {
-  //   await readURL(image).then((e)=> setImageURL(e));
-  // };
-  // useEffect(()=>{
-  //   preview(image)
-  // },[image])
-  /* Конец превью картинки*/
-
 
   useEffect(()=>{
     if(trackProp){
@@ -100,15 +77,13 @@ const Track = ({id, trackProp = null, mode = 'track', currentPlayList = null}) =
     <div className={cl.TrackWrapper}>
       <div className={cl.ImageWrapper}>
         <div className={cl.Image} style={{backgroundImage: `url(${track.imageURL ? track.imageURL : './assets/questionmark.jpg'})`}}>
-          {mode !== 'preview' &&
-            <div className={cl.PlayButton} onClick={PlayButton}>
-              {currentTrack?.title === track.title ?
-                <BsPause className={cl.BsPause}/>
-                :
-                <BsPlay className={cl.BsPlay}/>
-              }
-            </div>
-          }
+          <div className={cl.PlayButton} onClick={PlayButton}>
+            {currentTrack?.title === track.title ?
+              <BsPause className={cl.BsPause}/>
+              :
+              <BsPlay className={cl.BsPlay}/>
+            }
+          </div>
         </div>
         
       </div>

@@ -7,6 +7,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import card from '../../UI/Card.module.css'
 import cl from './News.module.css'
 import { useSelector } from 'react-redux'
+import Card from '../../UI/Card'
 
 
 const News = () => {
@@ -24,7 +25,7 @@ const News = () => {
               <NewsFetch/>
             </Col>
             <Col lg={{order: 'last', span: 3}} sm={{order: 'first', span: 12}} xs={{order: 'first', span: 12}} >
-                <div className={card.Wrapper}>
+                <Card>
                   <div className={cl.CardWrapper}>
                     <div className={cl.Header}>
                       <div className={cl.Title}>Навигация:</div>
@@ -38,7 +39,7 @@ const News = () => {
                       }
                     </div>
                   </div>
-                </div>
+                </Card>
                 {/* <div className={card.Wrapper}>
                   <div className={cl.CardWrapper}>
                     <div className={cl.Header}>

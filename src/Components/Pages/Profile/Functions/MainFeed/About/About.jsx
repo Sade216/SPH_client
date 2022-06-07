@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
 
-import card from '../../../../../UI/Card.module.css'
 import cl from './About.module.css'
 import { NavLink } from 'react-router-dom'
+import Card from '../../../../../UI/Card'
 
 const About = ({about = null, pref_genres = null}) => {
 
   return (
-    <div className={card.Wrapper}>
-    <div className={cl.CardWrapper}>
+    <Card>
+      <div className={cl.CardWrapper}>
         <div className={cl.Title}>Данные:</div>
         <div className={cl.Row}>
           <div className={cl.PrimaryText}>
@@ -36,7 +36,7 @@ const About = ({about = null, pref_genres = null}) => {
           </div>
         }
     </div>
-  </div>
+  </Card>
   )
 }
 

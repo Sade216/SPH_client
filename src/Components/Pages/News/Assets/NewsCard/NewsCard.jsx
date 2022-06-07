@@ -5,7 +5,7 @@ import {HiOutlineDotsHorizontal} from 'react-icons/hi'
 import {BiLike} from 'react-icons/bi'
 import {FaRegComment} from 'react-icons/fa'
 
-import card from '../../../../UI/Card.module.css'
+import Card from '../../../../UI/Card'
 import cl from './NewsCard.module.css'
 
 import {useSelector} from 'react-redux'
@@ -37,7 +37,7 @@ const NewsCard = ({news, index}) => {
     }
 
     return (
-        <div className={card.Wrapper} key={index}>
+        <Card key={index}>
             <div className={cl.CardWrapper}>
                 <div className={cl.Header}>
                     <div className={cl.Title}>{news.title}</div>
@@ -74,7 +74,7 @@ const NewsCard = ({news, index}) => {
                     }
                 </div>
             </div>
-        </div>
+        </Card>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import cl from './Login.module.css'
-import card from '../../UI/Card.module.css'
+import Card from '../../UI/Card'
 import {Container, Col, Row} from 'react-bootstrap'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -35,7 +35,7 @@ const Login = () => {
         <Container>
           <Row>
             <Col className={cl.Colums}>
-              <div className={card.Wrapper}>
+              <Card>
                 <div className={cl.Header}>
                   <div className={cl.Title}>
                     Логин
@@ -51,10 +51,10 @@ const Login = () => {
                     disabled={!loginLog | !passwordLog}
                     onClick={()=> Log()}/>
                 </div>
-              </div>
+              </Card>
             </Col>
             <Col>
-              <div className={card.Wrapper}>
+              <Card>
                 <div className={cl.Header}>
                   <div className={cl.Title}>
                     Регистрация
@@ -73,7 +73,7 @@ const Login = () => {
                     disabled={!loginReg | !emailReg | !passwordReg | !passwordConfirmReg | (passwordReg !== passwordConfirmReg)}
                     onClick={()=> Reg()}/>
                 </div>
-              </div>
+              </Card>
             </Col>
           </Row>
         </Container>

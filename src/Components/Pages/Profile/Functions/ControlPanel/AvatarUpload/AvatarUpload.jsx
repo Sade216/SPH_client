@@ -6,10 +6,12 @@ import cl from './AvatarUpload.module.css'
 import axios from 'axios'
 import { serverURL } from '../../../../../../Redux/config/axios';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ChangeAvatar } from '../../../../../../Redux/reducers/asyncActions/fetchUser';
 
 const AvatarUpload = () => {
   const currentUser = useSelector(state => state.user.user)
+  const dispatch = useDispatch()
 
   const imageRef = useRef();
   function ChangeImage(){
@@ -28,18 +30,7 @@ const AvatarUpload = () => {
 
     let formData = new FormData();
     formData.append("image", image);
-    axios({
-        method: "post",
-        url: serverURL + "/user/change_avatar",
-        data: formData,
-        withCredentials: true,
-        headers: {
-          accept: 'application/json',
-          'content-type': 'multipart/form-data',
-        },
-      }).then((res)=>{
-        console.log(res);
-      })
+    dispatch(ChangeAvatar(formData))
   }
   return (
     <>

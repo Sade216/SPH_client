@@ -1,8 +1,8 @@
 .CardWrapper{
+    background: var(--background-02);
     padding: 20px;
-    margin-bottom: 24px;
+    border-radius: 6px;
 }
-
 .InputWrapper{
     display: flex;
     align-items: center;
@@ -16,10 +16,10 @@
     width: inherit;
     display: flex;
 }
-.PostText{
+.MsgText{
     width: inherit;
     background-color: transparent;
-    /* resize: none; */
+    resize: none;
     max-height: 100px;
     min-height: 50px;
     height: 50px;
@@ -28,12 +28,12 @@
     caret-color: var(--text-01);
     color: var(--text-01);
     font-size: 18px;
-    padding: 10px 10px;
+    padding: 15px 10px 5px 10px;
+    margin-bottom: 5px;
 }
-.PostText::-webkit-scrollbar{
+.MsgText::-webkit-scrollbar{
     display: none;
 }
-
 .Buttton{
     height: 33px;
     width: 33px;
@@ -41,14 +41,12 @@
     margin: 0 10px;
     cursor: pointer;
 }
-
 .Buttton:focus{
     color: var(--accent-01);
 }
 .Buttton:hover{
     color: var(--accent-01);
 }
-
 .SendButtton{
     height: 33px;
     width: 33px;
@@ -56,32 +54,17 @@
     margin: 0 10px;
     cursor: pointer;
 }
-
 .SendButtton:focus{
     color: var(--accent-01);
 }
 .SendButtton:hover{
     color: var(--accent-01);
 }
-/* .Row{
-    display: flex;
-    flex-direction: row;
-}*/
-.Title{
-    font-size: 22px;
-    font-weight: 700;
+
+.Spinner{
+    height: 33px;
+    width: 33px;
     color: var(--text-01);
-    margin-bottom: 15px;
+    margin: 0 10px;
+    cursor: pointer;
 }
-/*
-.PrimaryText{
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text-01);
-}
-.SecondaryText{
-    margin-left: 10px;
-    color: var(--text-02);
-    font-size: 16px;
-    font-weight: 500;
-} */

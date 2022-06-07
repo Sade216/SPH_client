@@ -9,12 +9,11 @@ import AvatarUpload from './Functions/ControlPanel/AvatarUpload/AvatarUpload'
 import AddFiles from './Functions/ControlPanel/AddFiles/AddFiles'
 import Settings from './Functions/ControlPanel/Settings/Settings'
 
-import About from './Functions/MainFeed/About/About'
-import CreatePost from './Functions/MainFeed/CreatePost/CreatePost'
 import FollowList from './Functions/ControlPanel/FollowList/FollowList'
 import Collection from './Functions/ControlPanel/Collection/Collection'
 
-// import {BsPencil} from 'react-icons/bs'
+import About from './Functions/MainFeed/About/About'
+import Posts from './Functions/MainFeed/Posts/Posts'
 
 import { useSelector } from 'react-redux'
 
@@ -101,8 +100,7 @@ const Profile = ({preSelectedTab = 0}) => {
                     <Tab>Избранное</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
-                    <CreatePost/>
-                    <h3>Пользователь ничего не публикует</h3>
+                    <Posts />
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
                     <h3>Все треки, альбомы, коллекции пользователя</h3>

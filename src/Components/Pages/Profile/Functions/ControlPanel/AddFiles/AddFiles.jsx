@@ -6,7 +6,7 @@ import modal from '../../../../../UI/Modal/Modal.module.css'
 import {IoMusicalNotesOutline} from 'react-icons/io5'
 import { ToastSuccess } from '../../../../../UI/Toasts'
 
-import Track from '../../../../../UI/Player/Track/Track'
+import TrackPreview from '../../../../../UI/Player/Track/TrackPreview'
 
 import {useSelector, useDispatch} from 'react-redux'
 
@@ -97,7 +97,7 @@ const AddFiles = () => {
             <div className={modal.ModalContent}>
                 <h2>Добавить трек</h2>
                 <h4>Предпросмотр:</h4>
-                <Track track={{title, author, image}} mode='preview'/>
+                <TrackPreview title={title} author={author} image={image}/>
                 <h4>Данные:</h4>
                 <div className={cl.Row}>
                   <label>Трек:</label>

@@ -5,7 +5,8 @@ import axios from "axios"
 import { setAuthToken, serverURL } from '../../config/axios';
 import { userSlice } from "../../reducers/UserReducer";
 
-export const fetchUserData = ()=>{
+//Авторизация  
+export const fetchUserData = (Notifications = true)=>{
     return (dispatch) => {
         setAuthToken(null)
         axios({
@@ -15,10 +16,14 @@ export const fetchUserData = ()=>{
         }).then((res)=>{
             if(res?.status === 200){
                 dispatch(userSlice.actions.userGetData(res.data))
-                ToastSuccess('Вы успешно авторизовались')
+                if(Notifications){
+                    ToastSuccess('Вы успешно авторизовались')
+                }
             }
         }).catch(()=>{
-            ToastWarn('Предыдущая сессия не найдена')
+            if(Notifications){
+                ToastWarn('Предыдущая сессия не найдена')
+            }
         })
     }
 }
@@ -74,6 +79,35 @@ export const UserLogout = () =>{
         }
     }
 }
+//Профиль
+export const ChangeAvatar = (formData) => {
+    return async (dispatch) => {
+        const response = await axios({
+                method: "post",
+                url: serverURL + "/user/change_avatar",
+                data: formData,
+                withCredentials: true,
+                headers: {
+                accept: 'application/json',
+                'content-type': 'multipart/form-data',
+                },
+        }).then(()=>{
+            dispatch(fetchUserData(false))
+            ToastSuccess('Аватар успешно сменён')
+        })
+        
+        return response
+    }
+}
+export const ChangeProfileData = (formData) => {
+    return async (dispatch) => {
+        // const response = await
+
+        // return response
+    }
+}
+
+//Профиль(чужой) 
 export const isFollowed = (id) => {
     return async (dispatch) => {
         let response = await axios({

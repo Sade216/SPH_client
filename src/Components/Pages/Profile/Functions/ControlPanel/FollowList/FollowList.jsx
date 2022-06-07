@@ -4,12 +4,12 @@ import UserCard from '../../../../../UI/UserCard/UserCard'
 
 import cl from './FollowList.module.css'
 
-import card from '../../../../../UI/Card.module.css'
+import Card from '../../../../../UI/Card'
 
 const FollowList = ({userFollowers}) => {
 
     return (
-        <div className={card.Wrapper}>
+        <Card>
             <div className={cl.CardWrapper}>
                 <div className={cl.Row}>
                     <div className={cl.Title}>Ваши подписки:</div>
@@ -22,7 +22,7 @@ const FollowList = ({userFollowers}) => {
                     <div className={cl.Error}>Пользователь никого не отслеживает</div>
                 }
             </div>
-        </div>
+        </Card>
     )
 }
 
