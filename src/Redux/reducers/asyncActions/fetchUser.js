@@ -107,6 +107,34 @@ export const ChangeProfileData = (formData) => {
     }
 }
 
+export const AddPost = (formData) => {
+    return async (dispatch) => {
+        console.log(formData.get('text'))
+        const response = await axios({
+            method: "post",
+            url: serverURL + "/user/createPost",
+            data: formData,
+            withCredentials: true,
+            headers: {
+                accept: 'application/json',
+                'content-type': 'multipart/form-data',
+            }
+        })
+
+        return response
+    }
+}
+export const DeletePost = (id) => {
+    return async (dispatch) => {
+        const response = await axios({
+            method: "get",
+            url: serverURL + `/user/deletePost/${id}`,
+            withCredentials: true,
+        })
+        return response
+    }
+}
+
 //Профиль(чужой) 
 export const isFollowed = (id) => {
     return async (dispatch) => {

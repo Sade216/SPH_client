@@ -68,3 +68,82 @@
     margin: 0 10px;
     cursor: pointer;
 }
+
+/* pin menu */
+
+.Pin{
+    position: relative;
+}
+
+.PinMenu{
+    position: absolute;
+    display: none;
+    top: -130px;
+    left: 40px;
+    min-height: 50px;
+    min-width: 50px;
+    border-radius: 6px;
+    background-color: var(--background-02);
+    box-shadow: -5px 5px 10px 1px var(--background-00);
+    animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
+    padding: 8px;
+    align-items: center;
+    flex-direction: column;
+}
+.PinMenu:global(.active){
+    display: flex;
+    opacity: 100;
+    top: -110px;
+}
+@keyframes openMenu {
+    0% {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      top: -130px;
+    }
+    100% {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      top: -110px;
+    }
+}
+.PinRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: normal;
+    margin-bottom: 10px;
+}
+.PinRow:last-child{
+    margin-bottom: 0;
+}
+
+.PinRow .PinButton{
+    height: 40px;
+    width: 46px;
+    padding: 2px 4px;
+}
+
+.PinButton{
+    margin-right: 5px;
+    color: var(--text-02);
+    transition: color .2s ease;
+}
+.PinRow:hover .PinButton{
+    color: var(--accent-01);
+    cursor: pointer;
+}
+.PinText{
+    overflow: hidden;
+    word-wrap: break-word;
+    inline-size: max-content;
+    transition: color .2s ease;
+    margin-right: 5px;
+}
+.PinRow:hover .PinText{
+    color: var(--accent-01);
+    cursor: pointer;
+}

@@ -53,11 +53,11 @@ const NewsCard = ({news, index}) => {
                 <div className={cl.Footer}>
                     <div className={cl.Row}>
                         <div className={cl.Element}>
-                        <BiLike disabled={!isAuthenticated} active={news.likes.indexOf(currentUser?.nickname)}/>
+                            <BiLike disabled={!isAuthenticated} active={news.likes.indexOf(currentUser?.nickname)}/>
                         </div>
                         <div className={cl.LikesCounter}>{news.likes.length <= 0 ? '' : news.likes.length}</div>
                         <div className={cl.Element}>
-                        <FaRegComment/>
+                            <FaRegComment/>
                         </div>
                     </div>
                     {role === 'admin' | role === 'moderator' ?

@@ -39,9 +39,11 @@ const NewsFetchQuery = () => {
     useQuery(['news', page], () => getNews(page), { keepPreviousData : true, staleTime: 300000 })
     
     useEffect(() => {
-        QueryClientGetNews.prefetchQuery(['news', page + 1], () =>
-        getNews(page + 1)
-        )
+        if(pageCount > page){
+            QueryClientGetNews.prefetchQuery(['news', page + 1], () =>
+            getNews(page + 1)
+            )
+        }
     }, [data, page])
 
     return (

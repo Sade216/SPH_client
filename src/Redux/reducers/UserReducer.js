@@ -57,6 +57,9 @@ export const userSlice = createSlice({
         },
         getUserTrackList(state, action){
             state.user.trackList = action.payload
+        },
+        getUserPosts(state, action){
+            state.user.posts = action.payload
         }
     },
     extraReducers: {

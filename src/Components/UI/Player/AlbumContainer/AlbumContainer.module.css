@@ -1,0 +1,14 @@
+.Wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: auto;
+    padding: 5px 0;
+    scroll-behavior: smooth;
+}
+.Wrapper div{
+    margin-left: 10px;
+}
+.Wrapper div:first-child{
+    margin-left: 0;
+}

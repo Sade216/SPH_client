@@ -77,11 +77,11 @@
     font-size: 24px;
     color: var(--text-02);
     display: flex;
-    cursor: pointer;
 }
 .Element svg{
     position: relative;
     align-self: center;
+    cursor: pointer;
 }
 .Element svg[active='0']{
     color: var(--accent-01);

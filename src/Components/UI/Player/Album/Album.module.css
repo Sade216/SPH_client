@@ -1,0 +1,91 @@
+.CardWrapper{
+    min-height: 200px;
+    min-width: 200px;
+    border-radius: 6px;
+}
+
+.Wrapper{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Background{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 101%;
+    border-radius: 6px;
+}
+
+.Data{
+    z-index: 10;
+    margin: 0 !important;
+    padding: 10px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 0 0 6px 6px;
+    line-height: 20px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all .3s ease-in;
+}
+
+.Wrapper:hover .Data{
+    min-height: 100%;
+    border-radius: 6px;
+}
+
+.PlayBtn{
+    position: absolute;
+    transition: all .3s ease;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PlayBtn svg{
+    font-size: 44px;
+    opacity: 0;
+    transition: opacity .3s ease;
+    transition-delay: 150ms;
+}
+
+.PlayBtn svg:hover{
+    cursor: pointer;
+    color: var(--accent-01);
+}
+
+.Data:hover .PlayBtn svg{
+    opacity: 1;
+}
+
+.Title{
+    z-index: 11;
+    font-size: 18px;
+    color: var(--text-01);
+    margin: 0 !important;
+}
+.Author{
+    z-index: 11;
+    font-size: 18px;
+    margin: 0 !important;
+    text-decoration: none;
+    color: var(--text-02);
+}
+.Author:hover{
+    color: var(--accent-01);
+}
