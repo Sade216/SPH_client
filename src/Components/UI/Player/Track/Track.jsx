@@ -100,11 +100,13 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
                   {currentUser.nickname !== track.author &&
                     <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
                   }
-                  {currentUser.nickname === track.author&&
+                  {currentUser.nickname === track.author | currentUser.role === 'admin' ?
                     <>
                       <button disabled className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
                       <button className={cl.Link} onClick={()=> DeleteTrack()}>Удалить</button>
                     </>
+                    :
+                    null
                   }
                 </div>
               </div>

@@ -16,9 +16,9 @@ const Settings = ({mode}) => {
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
-    const defaultTheme = localStorage.getItem('TYPE_OF_THEME') ? true : false
+    const defaultTheme = localStorage.getItem('TYPE_OF_THEME') ? localStorage.getItem('TYPE_OF_THEME') : false
 
-    const [theme, setTheme] = useState(defaultTheme)
+    const [theme, setTheme] = useState(defaultTheme === 'light' ? false : true)
     const [about, setAbout] = useState('')
     const [backgroundImage, setBackgroundImage] = useState('')
 
