@@ -9,6 +9,7 @@ import Collection from './Functions/ControlPanel/Collection/Collection'
 import About from './Functions/MainFeed/About/About'
 import AddToFollow from './Functions/ControlPanel/AddToFollow/AddToFollow'
 import FollowList from './Functions/ControlPanel/FollowList/FollowList'
+import Posts from './Functions/MainFeed/Posts/Posts'
 
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
@@ -114,7 +115,7 @@ const ProfileDifferent = () => {
                     <Tab>Подборки</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
-                      <h3>Пользователь ничего не публикует</h3>
+                    <Posts user={pageUser}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
                       <h3>Популярное</h3>

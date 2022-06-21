@@ -2,3 +2,203 @@
     margin-bottom: 24px;
     padding: 20px;
 }
+
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Author{
+    text-decoration: none;
+    color: var(--text-01);
+}
+.Author:hover{
+    color: var(--accent-01);
+}
+.Text{
+    padding-left: 25px;
+    margin: 18px 0;
+}
+.Time{
+    color: var(--text-02);
+}
+
+/* .Wrapper:hover .Time{
+    display: none;
+}
+.MenuToggler{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 20px 0 0;
+    color: var(--text-02);
+
+} */
+
+
+.Footer{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+.Row{
+    display: flex;
+    flex-direction: row;
+}
+.LikesCounter{
+    font-size: 22px;
+    color: var(--text-02);
+    margin-right: 20px;
+    font-weight: 500;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+.Element{
+    margin-right: 10px;
+    font-size: 24px;
+    color: var(--text-02);
+    display: flex;
+}
+.Element svg{
+    position: relative;
+    align-self: center;
+    cursor: pointer;
+}
+.Element svg[active='0']{
+    color: var(--accent-01);
+}
+.Element:hover{
+    color: var(--accent-01);
+}
+
+.Element svg[disabled]{
+    cursor: default;
+}
+.Element:hover svg[disabled]{
+    color: var(--text-02);
+}
+
+.Link{
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+}
+.Link:hover{
+    color: var(--text-02)
+}
+.Link:global(.active){
+    color: var(--accent-01);
+}
+
+.Options{
+    opacity: 0.5;
+    color: var(--text-01);
+    font-size: 26px;
+    transition: opacity .1s ease;
+}
+.Wrapper:hover .Options{
+    opacity: 1;
+    color: var(--text-01);
+    font-size: 26px;
+}
+.OptionElement{
+    cursor: pointer;
+}
+
+
+
+.MenuWrapper{
+    position: relative;
+    width: 100%;
+}
+.MenuBar{
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 50px;
+    background-color: var(--background-01);
+    transition: background-color .1s ease;
+}
+.MenuBar:hover{
+    background-color: var(--background-03);
+}
+.MenuBar button{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--text-01);
+}
+
+.MenuBar button svg{
+    transition: transform .2s ease;
+    height: 22px;
+    width: 22px;
+}
+.MenuBar button:global(.active) svg{
+    transform: rotate(180deg);
+}
+
+.MenuOpenWrapper{
+    opacity: 0;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 10px 0;
+    top: -10px;
+    width: 250px;
+    right: 0;
+    border-radius: 6px;
+    background-color: var(--background-02);
+    box-shadow: -5px 5px 10px 1px var(--background-00);
+    animation: openMenu .4s cubic-bezier(0.68,-0.1, 0, 1);
+    z-index: 100;
+}
+.MenuOpenWrapper:global(.active){
+    display: flex;
+    opacity: 100;
+    top: 0px;
+}
+@keyframes openMenu {
+    0% {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      top: -10px;
+    }
+    100% {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      top: 0px;
+    }
+}
+.MenuLink{
+    text-decoration: none;
+    padding: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.MenuLink:hover{
+    color: var(--text-02)
+}
+.MenuLink:global(.active){
+    color: var(--accent-01);
+}

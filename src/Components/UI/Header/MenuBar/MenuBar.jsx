@@ -9,6 +9,7 @@ import { UserLogout } from '../../../../Redux/reducers/asyncActions/fetchUser'
 import cl from './MenuBar.module.css'
 import {AiOutlineMenu} from 'react-icons/ai'
 import {IoCloseSharp} from 'react-icons/io5'
+import Settings from '../../../Pages/Profile/Functions/ControlPanel/Settings/Settings'
 
 const MenuBar = () => {
     const dispatch = useDispatch()
@@ -46,11 +47,9 @@ const MenuBar = () => {
                     {isAuthenticated && 
                         <NavLink className={cl.Link} to={'/@' + currentUser.nickname} onClick={()=> setIsMenuOpen(false)}>Профиль</NavLink>
                     }
-                    {/* {currentUser && 
-                        <button className={cl.Link}>
+                    <button className={cl.Link}>
                         <Settings mode='header'/>
-                        </button>
-                    } */}
+                    </button>
                     <NavLink className={cl.Link} to='/about' onClick={()=> setIsMenuOpen(false)}>О нас</NavLink>
                     {!isAuthenticated &&
                         <NavLink className={cl.Link} to='/login' onClick={()=> setIsMenuOpen(false)}>Логин/Регистрация</NavLink>

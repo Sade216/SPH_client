@@ -1,11 +1,9 @@
 //React
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom' 
 //Темы
 import './index.css';
-import './Components/UI/Themes/dark.css';
-// import './Components/UI/Themes/light.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 //Компоненты
@@ -15,13 +13,18 @@ import {Provider} from 'react-redux'
 
 import {setupStore} from './Redux/store/index'
 
+import ThemeSelector, {CHOSEN_THEME} from './Components/UI/Themes/ThemeSelector'
+
 const store = setupStore();
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ThemeSelector>
+          <App />
+        </ThemeSelector>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

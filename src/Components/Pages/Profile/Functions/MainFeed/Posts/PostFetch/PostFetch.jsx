@@ -17,7 +17,7 @@ import PostCard from '../PostCard/PostCard';
   
 const QueryClientGetPosts = new QueryClient();
 
-const Posts = () => {
+const Posts = ({user = null}) => {
     const [page, setPage] = useState(1);
     const [pageCount, setPageCount] = useState(1);
 
@@ -25,17 +25,17 @@ const Posts = () => {
         const { data } = await axios({
             method: 'GET',
             withCredentials: true,
-            url: serverURL + `/user/getPosts?page=${page}`
+            url: serverURL + `/user/getPosts/${user && user.nickname}?page=${page}`
         })
         setPageCount(data?.pages)
         return data.data
     }
     const {isLoading, isError, error, data} = 
-    useQuery(['posts', page], () => getPosts(page), { keepPreviousData : true, staleTime: 300000 })
+    useQuery([`posts_${user.nickname}`, page], () => getPosts(page), { keepPreviousData: true, staleTime: 30000 })
     
     useEffect(() => {
         if(pageCount > page){
-            QueryClientGetPosts.prefetchQuery(['news', page + 1], () =>
+            QueryClientGetPosts.prefetchQuery([`posts_${user.nickname}`, page + 1], () =>
             getPosts(page + 1)
             )
         }
@@ -48,7 +48,7 @@ const Posts = () => {
                 <>
                 {
                     data.map((post, index)=>(
-                        <PostCard post={post} key={index}/>
+                        <PostCard post={post} user={user} key={index}/>
                     ))
                 }
                 <div className={cl.PaginationWrapper}>
@@ -61,7 +61,7 @@ const Posts = () => {
                     <div className={cl.PageCounter}>{page}</div>
                     <button
                         onClick={() => {setPage(old => old + 1)}}
-                        disabled={page === pageCount}
+                        disabled={page === pageCount | pageCount === 0}
                     >
                         <IoIosArrowForward/>
                     </button>
@@ -72,10 +72,10 @@ const Posts = () => {
     )
 }
 
-const PostFetch = () => {
+const PostFetch = ({user}) => {
     return (
         <QueryClientProvider client={QueryClientGetPosts}>
-            <Posts/>
+            <Posts user={user}/>
         </QueryClientProvider>
     )
 }

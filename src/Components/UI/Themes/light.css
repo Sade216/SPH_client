@@ -1,15 +1,14 @@
 :root{
-    /*background colors*/
-    --background-00: rgb(241, 241, 241);
-    --background-01: rgb(204, 204, 204);
-    --background-02: rgb(160, 160, 160);
-    --background-03: rgb(121, 121, 121);
-    --background-04: rgb(41, 41, 41);
+    --background-00: #5d5d5d;
+    --background-00-05: rgb(121 121 121 / 80%);
+    --background-01: #cfcfcf;
+    --background-02: #e0e0e0;
+    --background-03: #cbcbcb;
+    --background-04: #888888;
 
-    /*Text colors*/
-    --text-01: rgb(0, 0, 0);
-    --text-02: rgb(58, 58, 58);
-    --text-03: rgb(107, 107, 107);
+    --text-01: #000000;
+    --text-02: #5c5c5c;
+    --text-03: #ebebeb; 
 
     --accent-01: rgba(49, 166, 239, 1);
 }

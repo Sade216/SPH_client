@@ -2,14 +2,11 @@ import React, {useEffect, useState} from 'react'
 
 import {Spinner} from 'react-bootstrap'
 import cl from './NewsFetch.module.css'
-
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
 import NewsCard from '../NewsCard/NewsCard'
 
-import axios from 'axios'
-
-import {serverURL} from '../../../../../Redux/config/axios'
+import { fetchNews } from '../../../../../Redux/reducers/asyncActions/fetchNews'
 
 import {
   useQuery,
@@ -18,25 +15,23 @@ import {
 //   ReactQueryDevtools,
 } from 'react-query'
 
+import { useDispatch } from 'react-redux'
+
 const QueryClientGetNews = new QueryClient();
 
 const NewsFetchQuery = () => {
-    
+    const dispatch = useDispatch()
     //--------------------НОВОСТИ--------------------
     const [page, setPage] = useState(1);
     const [pageCount, setPageCount] = useState(1);
 
     async function getNews(page = 1){
-        const { data } = await axios({
-            method: 'GET',
-            withCredentials: true,
-            url: serverURL + `/news/getAll?page=${page}`
-        })
+        const data = await dispatch(fetchNews(page))
         setPageCount(data?.pages)
         return data.data
     }
     const {isLoading, isError, error, data} = 
-    useQuery(['news', page], () => getNews(page), { keepPreviousData : true, staleTime: 300000 })
+    useQuery(['news', page], () => getNews(page), { keepPreviousData : true, staleTime: 1000 })
     
     useEffect(() => {
         if(pageCount > page){

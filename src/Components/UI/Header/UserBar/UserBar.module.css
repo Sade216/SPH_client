@@ -66,7 +66,7 @@
 .Wrapper .ProfileImage{
     height: 36px;
     width: 36px;
-    border-radius: 6px;
+    border-radius: 10px;
     margin-right: 15px;
     background-size: cover;
     background-position: center;
@@ -83,7 +83,7 @@
     right: 0;
     border-radius: 6px;
     background-color: var(--background-02);
-    box-shadow: -5px 5px 10px 1px var(--background-00);
+    box-shadow: 2px 2px 4px 1px var(--background-00-05);
     animation: open123 .4s cubic-bezier(0.68,-0.1, 0, 1);
     z-index: 100;
 }

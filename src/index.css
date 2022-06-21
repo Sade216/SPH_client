@@ -24,6 +24,7 @@ html{
 
 *{
   box-sizing: border-box;
+  /* transition: background-color .5s ease, color .2s ease; */
 }
 
 body {

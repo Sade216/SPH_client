@@ -1,3 +1,9 @@
+@media (max-width: 580px), (max-height: 840px){
+    .ImageWrapper{
+        max-width: 250px !important;
+        max-height: 250px !important;
+    }
+}
 @media (max-width:992px) {
     .PlayerWrapper{
         bottom: 0px;
@@ -24,8 +30,8 @@
     .ImageWrapper{
         width: 100% !important;
         height: 100% !important;
-        max-width: 400px !important;
-        max-height: 400px !important;
+        max-width: 400px ;
+        max-height: 400px ;
         margin: 15px 0 15px 0 !important;
     }
     .Image{
@@ -116,18 +122,16 @@
     text-decoration: none;
 }
 .ImageWrapper{
-    height: 70px;
-    width: 70px;
+    height: 68px;
+    width: 68px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
-    border-radius: 6px;
-    margin-left: 10px;
+    border-radius: 10px;
 }
 .Image{
-    height: 60px;
-    width: 60px;
+    height: 68px;
+    width: 68px;
     border-radius: 6px;
     background-size: cover;
     background-position: center;

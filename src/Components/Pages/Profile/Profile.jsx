@@ -100,7 +100,7 @@ const Profile = ({preSelectedTab = 0}) => {
                     <Tab>Избранное</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
-                    <Posts />
+                    <Posts user={currentUser}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
                     <h3>Все треки, альбомы, коллекции пользователя</h3>

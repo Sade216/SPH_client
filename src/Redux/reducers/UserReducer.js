@@ -23,6 +23,7 @@ const initState = {
     },
     isLoading: false,
     error: null,
+    theme: 'light',
 }
 
 export const userSlice = createSlice({
@@ -60,7 +61,10 @@ export const userSlice = createSlice({
         },
         getUserPosts(state, action){
             state.user.posts = action.payload
-        }
+        },
+        changeTheme(state, action){
+            state.theme = action.payload
+        },
     },
     extraReducers: {
     }

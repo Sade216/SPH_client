@@ -8,7 +8,8 @@ import {FaRegComment} from 'react-icons/fa'
 import Card from '../../../../UI/Card'
 import cl from './NewsCard.module.css'
 
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import { isLikedNews, setLikeOnNews, setUnlikeOnNews } from '../../../../../Redux/reducers/asyncActions/fetchNews'
 
 const NewsCard = ({news, index}) => {
     const currentUser = useSelector(state => state.user.user)
@@ -36,6 +37,35 @@ const NewsCard = ({news, index}) => {
         setIsMenuOpen(!isMenuOpen);
     }
 
+    const dispatch = useDispatch()
+
+    const [isFollow, setIsFollow] = useState(false)
+    const [newLength, setNewLength] = useState(0)
+
+    function GetIsFollowed(){
+        dispatch(isLikedNews(news._id)).then((res)=>{
+            setIsFollow(res.data.status)
+            setNewLength(res.data.length)
+        })
+    }
+    function Follow(){
+        if(!isFollow){
+            dispatch(setLikeOnNews(news._id)).then((res)=>{
+                setIsFollow(res.data.status)
+                setNewLength(res.data.length)
+            })
+        }
+        else{
+            dispatch(setUnlikeOnNews(news._id)).then((res)=>{
+                setIsFollow(res.data.status)
+                setNewLength(res.data.length)
+            })
+        }
+    }
+    useEffect(()=>{
+        GetIsFollowed()
+    },[news])
+
     return (
         <Card key={index}>
             <div className={cl.CardWrapper}>
@@ -53,9 +83,13 @@ const NewsCard = ({news, index}) => {
                 <div className={cl.Footer}>
                     <div className={cl.Row}>
                         <div className={cl.Element}>
-                            <BiLike disabled={!isAuthenticated} active={news.likes.indexOf(currentUser?.nickname)}/>
+                            <BiLike disabled={!isAuthenticated} active={isFollow ? '1' : '0'} onClick={()=> Follow()}/>
                         </div>
-                        <div className={cl.LikesCounter}>{news.likes.length <= 0 ? '' : news.likes.length}</div>
+                        {isAuthenticated ? 
+                            <div className={cl.LikesCounter}>{newLength <= 0 ? '' : newLength}</div>
+                        :
+                            <div className={cl.LikesCounter}>{news.likes.length <= 0 ? '' : news.likes.length}</div>    
+                        }
                         <div className={cl.Element}>
                             <FaRegComment/>
                         </div>

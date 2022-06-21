@@ -60,21 +60,20 @@ const UserCard = (props) => {
                 <div className={cl.Options}>
                     <HiOutlineDotsHorizontal className={isMenuOpen ? 'active' : ''} onClick={()=> MenuToggler()}/>
                     <div className={cl.MenuWrapper} ref={MenuBarRef}>
-                    
-                    <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
-                        {/* {currentUser.nickname !== track.author &&
-                        <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
-                        }
-                        {currentUser.nickname === track.author&&
-                        <div>
-                            <button disabled className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
-                            <button className={cl.Link} onClick={()=> DeleteTrack()}>Удалить</button>
+                        <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
+                            {/* {currentUser.nickname !== track.author &&
+                            <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
+                            }
+                            {currentUser.nickname === track.author&&
+                            <div>
+                                <button disabled className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
+                                <button className={cl.Link} onClick={()=> DeleteTrack()}>Удалить</button>
+                            </div>
+                            } */}
                         </div>
-                        } */}
                     </div>
                 </div>
             </div>
-          </div>
         </div>
     )
 }
