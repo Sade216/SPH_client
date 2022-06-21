@@ -11,4 +11,11 @@
     --text-03: #ebebeb; 
 
     --accent-01: rgba(49, 166, 239, 1);
+
+
+    --player-bg: rgba(255, 255, 255, 0.4);
+    --player-bg2: #cbcbcb;
+    --player-text: #000000;
+    --player-text2: #5c5c5c;
+    --player-btns: #000000;
 }

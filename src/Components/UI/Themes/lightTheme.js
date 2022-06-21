@@ -13,6 +13,13 @@ const Theme = () => {
     document.documentElement.style.setProperty('--text-02', '#5c5c5c');
     document.documentElement.style.setProperty('--text-03', '#ebebeb');
     document.documentElement.style.setProperty('--accent-01', 'rgba(49, 166, 239, 1)');
+    
+    document.documentElement.style.setProperty('--player-bg', 'rgba(255, 255, 255, 0.4)');
+    document.documentElement.style.setProperty('--player-bg2', 'cbcbcb');
+    document.documentElement.style.setProperty('--player-text', '#000000');
+    document.documentElement.style.setProperty('--player-text2', '#5c5c5c');
+    document.documentElement.style.setProperty('--player-btns', '#000000');
+
     return (
         <React.Fragment></React.Fragment>
     )

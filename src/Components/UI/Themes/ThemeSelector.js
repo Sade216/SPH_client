@@ -15,13 +15,13 @@ const ThemeSelector = ({ children }) => {
   },[])
 
   useEffect(()=>{
-    localStorage.setItem('TYPE_OF_THEME', theme)
+    if(theme){
+      localStorage.setItem('TYPE_OF_THEME', theme)
+    }
   },[theme])
   
   return (theme &&
     <>
-      {console.log(theme === 'light')}
-      {console.log(theme === 'dark')}
       <React.Suspense fallback={<></>}>
         {(theme === 'light') && <LightTheme />}
         {(theme === 'dark') && <DarkTheme />}

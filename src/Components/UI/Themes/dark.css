@@ -13,4 +13,10 @@
     --text-03: rgb(44, 44, 44);
 
     --accent-01: rgba(49, 166, 239, 1);
+
+    --player-bg: rgba(31, 36, 43,0.8);
+    --player-bg2: rgba(60, 66, 77, 1);
+    --player-text: rgba(240, 240, 240, 1);
+    --player-text2: rgba(148, 154, 156, 1);
+    --player-btns: rgb(31, 36, 43);
 }

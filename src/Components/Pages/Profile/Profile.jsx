@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux'
 
 const Profile = ({preSelectedTab = 0}) => {
   const currentUser = useSelector(state => state.user.user)
+  const theme = useSelector(state => state.user.theme)
   const {isAuthenticated} = currentUser
 
   const [tabIndex, setTabIndex] = useState(0)
@@ -37,11 +38,20 @@ const Profile = ({preSelectedTab = 0}) => {
     return string.toString();
   }
 
+
+  function BgColor(){
+    if(theme === 'light'){
+      return 'black'
+    }
+    else if(theme === 'dark'){
+      return 'white'
+    }
+  }
   return (
     isAuthenticated && 
       <div>
         <div className={cl.ProfileBackImage} style={
-          {background: `linear-gradient(rgba(10,10,20,0.5) -150% , var(--background-01) 80%), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px'><text x='-30' y='27%' fill='white' font-size='3rem' font-weight='600' opacity='0.8'>${AlternateBackgroundImage()}</text><text x='-15' y='60%' fill='white' font-size='4rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text><text x='-5' y='93%' fill='white' font-size='3rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text></svg>")`}
+          {background: `linear-gradient(rgba(10,10,20,0.5) -150% , var(--background-01) 80%), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='200px'><text x='-30' y='27%' fill='${BgColor()}' font-size='3rem' font-weight='600' opacity='0.8'>${AlternateBackgroundImage()}</text><text x='-15' y='60%' fill='${BgColor()}' font-size='4rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text><text x='-5' y='93%' fill='${BgColor()}' font-size='3rem' font-weight='600' opacity='0.8' >${AlternateBackgroundImage()}</text></svg>")`}
         }></div>
         <div className={cl.Wrapper}>
           <Container>

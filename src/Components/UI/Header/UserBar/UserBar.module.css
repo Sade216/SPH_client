@@ -1,28 +1,9 @@
-@media (max-width:990px) {
-    .Wrapper{
-        display: none;
-    }
-}
-@media (max-width:1400px) {
+@media (max-width:320px) {
     .Name{
-        display: none !important;
-    }
-    .Role{
-        display: none;
-    }
-    .Wrapper{
-        width: 60px !important;
-    }
-    .Wrapper .ProfileImage{
-        margin: 0;
-    }
-    .User{
-        display: none;
-    }
-    .Bar{
-        justify-content: center !important;
+        width: 100px !important;
     }
 }
+
 
 .Wrapper{
     position: relative;
@@ -31,7 +12,7 @@
 .User{
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: left;
     padding-right: 10px;
     user-select:none;
 }
@@ -41,7 +22,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: right;
+    justify-content: left;
     height: 50px;
     background-color: var(--background-01);
     transition: background-color .1s ease;
@@ -51,7 +32,7 @@
     background-color: var(--background-03);
 }
 .Name{
-    width: 130px;
+    width: 230px;
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -67,7 +48,7 @@
     height: 36px;
     width: 36px;
     border-radius: 10px;
-    margin-right: 15px;
+    margin: 0 10px;
     background-size: cover;
     background-position: center;
 }

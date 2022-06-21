@@ -22,7 +22,7 @@ const Header = () => {
               <SearchBar/>
             </Col>
             <Col lg={2}>
-              <UserBar/>
+              {/* <UserBar/> */}
             </Col>
             <Col lg={1}>
               <MenuBar/>

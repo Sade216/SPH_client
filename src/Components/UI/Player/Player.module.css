@@ -73,7 +73,7 @@
     opacity: 0;
     width: 100vw;
     height: 85px;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: var(--player-bg);
     backdrop-filter: blur(5px);
     box-sizing: border-box;
     transition: 
@@ -88,7 +88,7 @@
 }
 
 .Data{
-    color: white;
+    color: var(--player-text);
     margin-left: 20px;
     width: 300px;
 }
@@ -117,7 +117,7 @@
 } */
 
 .Author{
-    color: var(--text-02);
+    color: var(--player-text2);
     font-size: 18px;
     text-decoration: none;
 }

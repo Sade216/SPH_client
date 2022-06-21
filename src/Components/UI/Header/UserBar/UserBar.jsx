@@ -40,32 +40,21 @@ const UserBar = () => {
   return (
     <div className={cl.Wrapper} ref={UserMenuRef}>
         <div className={cl.Bar} onClick={(e)=>MenuToggler()} >
-          <div className={cl.User}>
-              <div className={cl.Name}>{!isAuthenticated ? 'Anonymous' : currentUser.nickname}</div>
-              {isAuthenticated && <div className={cl.Role}>{currentUser.role}</div>}
-          </div>
           {isAuthenticated &&
             // <img src={currentUser.avatarURL === 'none' ? './assets/questionmark.jpg' : currentUser.avatarURL} alt={currentUser.nickname}/>
             <div className={cl.ProfileImage} style={{backgroundImage: `url(${currentUser.avatarURL === 'none' ? './assets/questionmark.jpg' : currentUser.avatarURL})`}}></div>
           }
+          <div className={cl.User}>
+              <div className={cl.Name}>{!isAuthenticated ? 'Anonymous' : currentUser.nickname}</div>
+              {isAuthenticated && <div className={cl.Role}>{currentUser.role}</div>}
+          </div>
+          
         </div>
         <div className={isMenuOpen ? cl.UserMenu + ' active' : cl.UserMenu}>
           {role === 'admin' && <NavLink className={cl.Link} to='/admin'>Админ</NavLink>}
-          {isAuthenticated && 
-            <NavLink className={cl.Link} to={'/@' + currentUser.nickname} onClick={()=> setIsMenuOpen(false)}>Профиль</NavLink>
-          }
-          {isAuthenticated && 
             <button className={cl.Link}>
               <Settings mode='header'/>
             </button>
-          }
-          <NavLink className={cl.Link} to='/about' onClick={()=> setIsMenuOpen(false)}>О нас</NavLink>
-          {!isAuthenticated &&
-            <NavLink className={cl.Link} to='/login' onClick={()=> setIsMenuOpen(false)}>Логин/Регистрация</NavLink>
-          }
-          {isAuthenticated &&
-            <button className={cl.Link} onClick={()=> dispatch(UserLogout())}>Выйти</button>
-          }
         </div>
     </div>
   )
