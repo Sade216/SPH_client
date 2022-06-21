@@ -11,7 +11,7 @@ const ThemeSelector = ({ children }) => {
   const theme = useSelector(state => state.user.theme)
 
   useEffect(()=>{
-    dispatch(userSlice.actions.changeTheme(localStorage.getItem('TYPE_OF_THEME') || 'light'))
+    dispatch(userSlice.actions.changeTheme(localStorage.getItem('TYPE_OF_THEME') || 'dark'))
   },[])
 
   useEffect(()=>{
