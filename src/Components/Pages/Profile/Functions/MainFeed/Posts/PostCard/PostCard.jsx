@@ -10,9 +10,11 @@ import {FaRegComment} from 'react-icons/fa'
 import moment from 'moment'
 
 import {Link} from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { DeletePost, isLikedPost, setLikeOnPost, setUnlikeOnPost } from '../../../../../../../Redux/reducers/asyncActions/fetchUser'
 
 const PostCard = ({post, user}) => {
+  const dispatch = useDispatch()
   const currentUser = useSelector(state => state.user.user)
   const {isAuthenticated, role} = currentUser
 
@@ -38,6 +40,10 @@ const PostCard = ({post, user}) => {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  const deletePost = () => {
+    dispatch(DeletePost(post._id))
+  }
+
   return (
     <Card className={cl.Wrapper}>
         <div className={cl.Header}>
@@ -45,29 +51,27 @@ const PostCard = ({post, user}) => {
           <div className={cl.Time}>{moment(post.createdAt).format("HH:mm")}</div>
         </div>
         <div className={cl.Text}>{post.text}</div>
-        <div className={cl.Footer}>
-          <div className={cl.Row}>
-              <div className={cl.Element}>
-                  <BiLike disabled={!isAuthenticated} active={post?.likes?.indexOf(user?.nickname)}/>
+        {isAuthenticated &&
+          <>
+            <div className={cl.Footer}>
+              <div className={cl.Row}>
+                  
               </div>
-              <div className={cl.LikesCounter}>{post?.likes?.length <= 0 ? '' : post?.likes?.length}</div>
-              <div className={cl.Element}>
-                  <FaRegComment/>
-              </div>
-          </div>
-          {role === 'admin' | role === 'moderator' | user.nickname === currentUser.nickname?
-              <div className={cl.Options} ref={MenuBarRef}>
-                  <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
-                  <div className={cl.MenuWrapper} >
-                  <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
-                      <button disabled className={cl.MenuLink} onClick={()=> MenuToggler()}>Изменить</button>
-                      <button className={cl.MenuLink} onClick={()=> MenuToggler()}>Удалить</button>
+              {role === 'admin' | role === 'moderator' | user.nickname === currentUser.nickname?
+                  <div className={cl.Options} ref={MenuBarRef}>
+                      <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
+                      <div className={cl.MenuWrapper} >
+                      <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
+                          <button disabled className={cl.MenuLink} onClick={()=> MenuToggler()}>Изменить</button>
+                          <button className={cl.MenuLink} onClick={()=> deletePost()}>Удалить</button>
+                      </div>
+                      </div>
                   </div>
-                  </div>
-              </div>
-              : null
-          }
-        </div>
+                  : null
+              }
+            </div>
+          </>
+        }
     </Card>
   )
 }

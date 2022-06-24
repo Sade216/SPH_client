@@ -9,6 +9,7 @@ import {IoIosMusicalNotes} from 'react-icons/io'
 import AudioPlayer from 'react-h5-audio-player';
 
 import {useSelector} from 'react-redux'
+import { BsExclamationCircle } from 'react-icons/bs';
 
 const Player = () => {
     const MusicState = useSelector(state => state.music)
@@ -62,6 +63,16 @@ const Player = () => {
                 </div>
                 <div className={cl.RunningLine}>
                     <NavLink className={cl.Author} to={`/@${currentTrack.author}`}>{currentTrack.author}</NavLink>
+                </div>
+            </div>
+            <div className={cl.Stat}>
+                <BsExclamationCircle/>
+                <div className={cl.AddInfo}>
+                    <div className={cl.StatRow}>Описание: {currentTrack.desc ? currentTrack : 'Описание отсутствует'}</div>
+                    <div className={cl.StatRow}>Теги: {currentTrack.tags.map((tag, index)=> (
+                        <div className={cl.StatText}>{tag}</div>
+                    ))}
+                    </div>
                 </div>
             </div>
             {currentTrack.trackURL &&

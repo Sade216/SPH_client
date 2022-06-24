@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
-import { deleteTrack, getTrackData, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
+import { addTimesListened, deleteTrack, getTrackData, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
 const Track = ({id, trackProp = null, currentPlayList = null}) => {
 
@@ -71,6 +71,9 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
   const PlayButton = () => {
     dispatch(musicSlice.actions.musicChangeCurrentTrack(track))
     dispatch(musicSlice.actions.musicChangeCurrentTrackList(currentPlayList))
+    if(!track.timesListened.includes(currentUser.nickname)){
+      dispatch(addTimesListened(track._id))
+    }
   }
 
   return ( track &&
@@ -97,6 +100,8 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
               <HiOutlineDotsHorizontal className={cl.OptionElement} onClick={MenuToggler}/>
               <div className={cl.MenuWrapper}>
                 <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
+                  <div className={cl.Stats}>Уникальных слушателей: {track.timesListened.length}</div>
+                  <hr className={cl.Hr}/>
                   {currentUser.nickname !== track.author &&
                     <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
                   }

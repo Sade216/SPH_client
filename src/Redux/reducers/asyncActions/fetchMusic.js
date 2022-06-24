@@ -74,4 +74,17 @@ export const getCollection = () => {
         })
         dispatch(userSlice.actions.getUserTrackList(data))
     }
-} 
+}
+
+
+export const addTimesListened = (id) => {
+    return async (dispatch) =>{
+        const response = await axios({
+            method: 'post',
+            withCredentials: true,
+            data: {id: id},
+            url: serverURL + '/music/setTimesListened'
+        })
+        return response
+    }
+}

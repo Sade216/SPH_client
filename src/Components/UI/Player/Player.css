@@ -41,7 +41,7 @@
     width: 100%;
     padding: 10px 15px;
     background-color: transparent;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     margin-right: 60px;
   }
   .rhap_container:focus:not(:focus-visible) {

@@ -15,9 +15,10 @@ const FollowList = ({userFollowers}) => {
                     <div className={cl.Title}>Ваши подписки:</div>
                     <button className={cl.Link}>Полный список</button>
                 </div>
-                {userFollowers ? userFollowers.slice(0,3).map((id, index)=>(
-                    <UserCard id={id} key={index}/>
-                ))
+                {userFollowers.length > 0 ? 
+                    userFollowers.slice(0,3).map((id, index)=>(
+                        <UserCard id={id} key={index}/>
+                    ))
                 : 
                     <div className={cl.Error}>Пользователь никого не отслеживает</div>
                 }

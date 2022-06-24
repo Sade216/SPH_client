@@ -202,3 +202,19 @@
 .Link:global(.active){
     color: var(--accent-01);
 }
+
+.Stats{
+    text-decoration: none;
+    padding: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: var(--text-01);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    user-select: none;
+}
+.Hr{
+    margin: 2px;
+}

@@ -23,7 +23,7 @@ const initState = {
     },
     isLoading: false,
     error: null,
-    theme: 'light',
+    theme: localStorage.getItem('TYPE_OF_THEME') ? localStorage.getItem('TYPE_OF_THEME') : 'light',
 }
 
 export const userSlice = createSlice({
