@@ -46,10 +46,12 @@ const Posts = ({user = null}) => {
             {isLoading ? (<div className={cl.Spinner}> <Spinner animation="border" role="status"/></div>) 
             : isError ? (<div>Error: {error.message}</div>) : (
                 <>
-                {
+                {data ?
                     data.map((post, index)=>(
                         <PostCard post={post} user={user} key={index}/>
                     ))
+                    :
+                    <div>Постов нет(</div>
                 }
                 <div className={cl.PaginationWrapper}>
                     <button

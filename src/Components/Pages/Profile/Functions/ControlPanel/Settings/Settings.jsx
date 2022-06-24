@@ -11,7 +11,7 @@ import { userSlice } from '../../../../../../Redux/reducers/UserReducer'
 
 const Settings = ({mode}) => {
     const dispatch = useDispatch()
-    const {isAuthenticated} = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user.user)
 
     const [showModal, setShowModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -19,8 +19,8 @@ const Settings = ({mode}) => {
     const defaultTheme = localStorage.getItem('TYPE_OF_THEME') ? localStorage.getItem('TYPE_OF_THEME') : false
 
     const [theme, setTheme] = useState(defaultTheme === 'light' ? false : true)
-    const [about, setAbout] = useState('')
-    const [backgroundImage, setBackgroundImage] = useState('')
+    const [about, setAbout] = useState(null)
+    const [backgroundImage, setBackgroundImage] = useState(null)
 
     const profileBackground = useRef()
     const uploadImage = useRef();
@@ -67,7 +67,7 @@ const Settings = ({mode}) => {
                     <h2>Настройки</h2>
                     {isAuthenticated &&
                         <>
-                            <div className={cl.Row}>
+                            {/* <div className={cl.Row}>
                                 <label>Фон профиля:</label>
                                 <button className={cl.SelectButton} onClick={()=>HandleProfileBackgroundUploader()}>Выберите фон профиля</button>
                                 <input ref={profileBackground} type='file' accept='image/*' onChange={handleProfileBackgroundSelect}/>
@@ -76,7 +76,7 @@ const Settings = ({mode}) => {
                             <div className={cl.Row}>
                                 <label>О себе:</label>
                                 <input type='text' placeholder='О себе' value={about} onChange={(e)=>setAbout(e.target.value)} required/>
-                            </div>
+                            </div> */}
                         </>
                     }
                     
