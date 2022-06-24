@@ -16,7 +16,10 @@ const Player = () => {
     const {currentTrack} = MusicState
 
     const [togglePlayer, setTogglePlayer] = useState(false)
-    const localVolume = localStorage.getItem('PlayerVolume')
+    const localVolume = localStorage.getItem('PlayerVolume') === null | localStorage.getItem('PlayerVolume') === undefined 
+        ? localStorage.setItem('PlayerVolume', 1) 
+        : localStorage.getItem('PlayerVolume')
+    
     const [volume, setVolume] = useState(localVolume)
 
     useEffect(()=>{
