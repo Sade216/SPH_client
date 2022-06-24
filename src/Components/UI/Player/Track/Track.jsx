@@ -53,7 +53,7 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
   },[])
   useEffect(()=>{
     if(track){
-      dispatch(trackIsFeatured(track?._id)).then((res)=>{
+      dispatch(trackIsFeatured(track?.trackID)).then((res)=>{
         setIsFeatured(res.data)
       })
     }
@@ -73,12 +73,12 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
   }
   
   function AddToFeatured(){
-    dispatch(addToFeatured(track._id)).then((res)=>{
+    dispatch(addToFeatured(track.trackID)).then((res)=>{
       setIsFeatured(res.data)
     })
   }
   function DeleteFromFeatured(){
-    dispatch(deleteFromFeatured(track._id)).then((res)=>{
+    dispatch(deleteFromFeatured(track.trackID)).then((res)=>{
       setIsFeatured(res.data)
     })
   }

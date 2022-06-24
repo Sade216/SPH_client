@@ -5,7 +5,6 @@ import Card from '../../../../../UI/Card'
 import cl from './Collection.module.css'
 
 import Track from '../../../../../UI/Player/Track/Track'
-import { NavLink } from 'react-router-dom'
 
 const Collection = ({trackList}) => {
     return (
