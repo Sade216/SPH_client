@@ -13,7 +13,7 @@ const FollowList = ({userFollowers}) => {
             <div className={cl.CardWrapper}>
                 <div className={cl.Row}>
                     <div className={cl.Title}>Ваши подписки:</div>
-                    <button className={cl.Link}>Полный список</button>
+                    {/* <button className={cl.Link}>Полный список</button> */}
                 </div>
                 {userFollowers.length > 0 ? 
                     userFollowers.slice(0,3).map((id, index)=>(

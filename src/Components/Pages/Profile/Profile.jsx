@@ -16,6 +16,8 @@ import About from './Functions/MainFeed/About/About'
 import Posts from './Functions/MainFeed/Posts/Posts'
 
 import { useSelector } from 'react-redux'
+import Library from './Functions/MainFeed/Library/Library'
+import Featured from './Functions/MainFeed/Featured/Featured'
 
 const Profile = ({preSelectedTab = 0}) => {
   const currentUser = useSelector(state => state.user.user)
@@ -113,10 +115,10 @@ const Profile = ({preSelectedTab = 0}) => {
                     <Posts user={currentUser}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                    <h3>Все треки, альбомы, коллекции пользователя</h3>
+                    <Library trackList={currentUser.trackList}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                    <h3>Музыка всех пользователей добавляется сюда</h3>
+                    <Featured featuredList={currentUser.featuredList}/>
                   </TabPanel>
                </Tabs>
               </Col>

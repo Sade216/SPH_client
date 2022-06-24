@@ -76,6 +76,50 @@ export const getCollection = () => {
     }
 }
 
+export const getFeaturedList = () => {
+    return async (dispatch)=>{
+        let {data} = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/music/getFeaturedList`,
+        })
+        console.log(data)
+        dispatch(userSlice.actions.getFeaturedList(data))
+    }
+}
+
+export const trackIsFeatured = (id) => {
+    return async (dispatch)=>{
+        let response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/music/isFeatured/${id}`,
+        })
+        return response
+    }
+}
+
+export const addToFeatured = (id) => {
+    return async (dispatch)=>{
+        let response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/music/addToFeatured/${id}`,
+        })
+        return response
+    }
+}
+
+export const deleteFromFeatured = (id) => {
+    return async (dispatch)=>{
+        let response = await axios({
+            method: 'GET',
+            withCredentials: true,
+            url: serverURL + `/music/deleteFromFeatured/${id}`,
+        })
+        return response
+    }
+}
 
 export const addTimesListened = (id) => {
     return async (dispatch) =>{

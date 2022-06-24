@@ -102,26 +102,26 @@ const Lib = () => {
                 <Tabs>
                     <TabList className={cl.Tabs}>
                         <Tab>Вся музыка</Tab>
-                        <Tab>Популярное</Tab>
-                        <Tab>Подборки</Tab>
+                        {/* <Tab>Популярное</Tab>
+                        <Tab>Подборки</Tab> */}
                     </TabList>
                     <TabPanel className={cl.TabContent}>
-                        <h3>Альбомы:</h3>
+                        {/* <h3>Альбомы:</h3>
                         <QueryClientProvider client={queryClientGetAlbums}>
                             <AlbumFetch/>
-                        </QueryClientProvider>
+                        </QueryClientProvider> */}
                         <hr />
                         <h3>Все композиции:</h3>
                         <QueryClientProvider client={queryClientGetTrack}>
                             <TracksFetch/>
                         </QueryClientProvider>
                     </TabPanel>
-                    <TabPanel className={cl.TabContent}>
+                    {/* <TabPanel className={cl.TabContent}>
                         <h3>Популярное</h3>
                     </TabPanel>
                     <TabPanel className={cl.TabContent}>
                         <h3>Подборки</h3>
-                    </TabPanel>
+                    </TabPanel> */}
                 </Tabs>
             </Row>
         </Container>

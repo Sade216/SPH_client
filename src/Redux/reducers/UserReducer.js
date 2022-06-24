@@ -20,6 +20,7 @@ const initState = {
         posts: [],
 
         trackList: [],
+        featuredList: [],
     },
     isLoading: false,
     error: null,
@@ -46,6 +47,7 @@ export const userSlice = createSlice({
             state.user.youFollow = action.payload.youFollow
             state.user.posts = action.payload.posts
             state.user.trackList = action.payload.trackList
+            state.user.featuredList = action.payload.featuredList
         },
         userLogin(state){
             return state
@@ -58,6 +60,9 @@ export const userSlice = createSlice({
         },
         getUserTrackList(state, action){
             state.user.trackList = action.payload
+        },
+        getFeaturedList(state, action){
+            state.user.featuredList = action.payload
         },
         getUserPosts(state, action){
             state.user.posts = action.payload

@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { musicSlice } from '../../../../Redux/reducers/MusicReducer'
-import { addTimesListened, deleteTrack, getTrackData, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
+import { addTimesListened, addToFeatured, deleteFromFeatured, deleteTrack, getTrackData, trackIsFeatured, updateTrackData } from '../../../../Redux/reducers/asyncActions/fetchMusic'
 
 const Track = ({id, trackProp = null, currentPlayList = null}) => {
 
@@ -41,15 +41,23 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
 
   const [track, setTrack]= useState(null)
 
+  const [isFeatured, setIsFeatured] = useState(false)
+
   useEffect(()=>{
     if(trackProp){
       setTrack(trackProp)
     }
     else if(id){
-      GetTrackData(id)
+      GetTrackData()
     }
   },[])
-
+  useEffect(()=>{
+    if(track){
+      dispatch(trackIsFeatured(track?._id)).then((res)=>{
+        setIsFeatured(res.data)
+      })
+    }
+  },[track])
   function GetTrackData(){
     if(id){
       dispatch(getTrackData(id)).then((res)=>{
@@ -57,16 +65,22 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
       })
     }
   }
-
   function ChangeTrackData(){
     dispatch(updateTrackData(track))
   }
-  function AddToFeature(){
-
-  }
-
   function DeleteTrack(){
     dispatch(deleteTrack(track))
+  }
+  
+  function AddToFeatured(){
+    dispatch(addToFeatured(track._id)).then((res)=>{
+      setIsFeatured(res.data)
+    })
+  }
+  function DeleteFromFeatured(){
+    dispatch(deleteFromFeatured(track._id)).then((res)=>{
+      setIsFeatured(res.data)
+    })
   }
   const PlayButton = () => {
     dispatch(musicSlice.actions.musicChangeCurrentTrack(track))
@@ -102,12 +116,15 @@ const Track = ({id, trackProp = null, currentPlayList = null}) => {
                 <div className={isMenuOpen ? cl.MenuOpenWrapper + ' active' : cl.MenuOpenWrapper}>
                   <div className={cl.Stats}>Уникальных слушателей: {track.timesListened.length}</div>
                   <hr className={cl.Hr}/>
-                  {currentUser.nickname !== track.author &&
-                    <button disabled className={cl.Link} onClick={()=> AddToFeature()}>Добавить в избранное</button>
+                  {currentUser.nickname !== track.author && 
+                    (isFeatured === false ? 
+                      <button className={cl.Link} onClick={()=> AddToFeatured()}>Добавить в избранное</button>
+                    :
+                      <button className={cl.Link} onClick={()=> DeleteFromFeatured()}>Удалить из избранного</button>)
                   }
                   {currentUser.nickname === track.author | currentUser.role === 'admin' ?
                     <>
-                      <button disabled className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
+                      <button className={cl.Link} onClick={()=> ChangeTrackData()}>Изменить</button>
                       <button className={cl.Link} onClick={()=> DeleteTrack()}>Удалить</button>
                     </>
                     :

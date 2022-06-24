@@ -13,7 +13,7 @@ const Collection = ({trackList}) => {
             <div className={cl.CardWrapper}>
                 <div className={cl.Row}>
                     <div className={cl.Title}>Коллекция:</div>
-                    <div className={cl.Link}>Полный список</div>
+                    {/* <div className={cl.Link}>Полный список</div> */}
                 </div>
                 {trackList.length > 0?
                     trackList.slice(0,3).map((id, index)=>(

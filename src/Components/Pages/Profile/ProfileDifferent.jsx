@@ -16,11 +16,12 @@ import axios from 'axios'
 import { serverURL } from '../../../Redux/config/axios'
 
 import { useSelector } from 'react-redux'
+import Library from './Functions/MainFeed/Library/Library'
+import Featured from './Functions/MainFeed/Featured/Featured'
 
 const ProfileDifferent = () => {
   let location = useLocation();
   let User = location.pathname.slice(2).toLocaleLowerCase();
-  console.log(User)
   const currentUser = useSelector(state => state.user.user)
   const theme = useSelector(state => state.user.theme)
   const {role, isAuthenticated} = currentUser
@@ -121,17 +122,17 @@ const ProfileDifferent = () => {
                 <Tabs>
                   <TabList className={cl.Tabs}>
                     <Tab>Посты</Tab>
-                    <Tab>Популярное</Tab>
-                    <Tab>Подборки</Tab>
+                    <Tab>Библиотека</Tab>
+                    <Tab>Избранное</Tab>
                   </TabList>
                   <TabPanel className={cl.TabContent}>
                     <Posts user={pageUser}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                      <h3>Популярное</h3>
+                    <Library trackList={pageUser.trackList}/>
                   </TabPanel>
                   <TabPanel className={cl.TabContent}>
-                      <h3>Подборки</h3>
+                    <Featured featuredList={pageUser.featuredList}/>
                   </TabPanel>
                 </Tabs>
               </Col>

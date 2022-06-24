@@ -134,7 +134,6 @@ export const DeletePost = (id) => {
         return response
     }
 }
-
 //Профиль(чужой) 
 export const isFollowed = (id) => {
     return async (dispatch) => {
